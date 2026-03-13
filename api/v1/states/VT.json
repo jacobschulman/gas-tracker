@@ -1,0 +1,17 @@
+{
+  "state": "VT",
+  "data": {
+    "2026-03-13": {
+      "regular": 3.526,
+      "midGrade": 4.029,
+      "premium": 4.454,
+      "diesel": 5.084
+    }
+  },
+  "metadata": {
+    "lastUpdated": "2026-03-13T22:32:45.601Z",
+    "totalDays": 5,
+    "firstDate": "2025-03-13",
+    "lastDate": "2026-03-13"
+  }
+}

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gas Price Tracker</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --text: #e1e4ed;
+      --muted: #8b8fa3;
+      --accent: #6c9cfc;
+      --green: #4ade80;
+      --red: #f87171;
+      --yellow: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+      margin-bottom: 24px;
+    }
+    header h1 { font-size: 1.8rem; font-weight: 700; }
+    header p { color: var(--muted); margin-top: 4px; }
+    .meta {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .meta span { background: var(--surface); padding: 2px 8px; border-radius: 4px; }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    select, button {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    select:hover, button:hover { border-color: var(--accent); }
+    button.active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .card .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card .price { font-size: 2rem; font-weight: 700; margin: 4px 0; }
+    .card .change { font-size: 0.85rem; }
+    .card .change.up { color: var(--red); }
+    .card .change.down { color: var(--green); }
+
+    .chart-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .chart-container h2 { font-size: 1.1rem; margin-bottom: 16px; }
+    canvas { width: 100% !important; height: 300px !important; }
+
+    .state-table-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .state-table-container h2 { font-size: 1.1rem; margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    tr:hover td { background: rgba(108, 156, 252, 0.05); }
+    td.price-cell { font-variant-numeric: tabular-nums; }
+    .rank { color: var(--muted); font-size: 0.8rem; }
+    .high { color: var(--red); }
+    .low { color: var(--green); }
+
+    .loading { text-align: center; padding: 60px; color: var(--muted); }
+    .error { text-align: center; padding: 60px; color: var(--red); }
+
+    .api-info {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .api-info h2 { font-size: 1.1rem; margin-bottom: 12px; }
+    .api-info code {
+      background: var(--bg);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.85rem;
+    }
+    .api-info ul { list-style: none; padding: 0; }
+    .api-info li { padding: 6px 0; border-bottom: 1px solid var(--border); }
+    .api-info li:last-child { border-bottom: none; }
+
+    .compare-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: default;
+    }
+    .compare-tag .remove {
+      cursor: pointer;
+      opacity: 0.7;
+      margin-left: 2px;
+    }
+    .compare-tag .remove:hover { opacity: 1; }
+
+    footer { margin-top: 32px; padding: 20px 0; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Gas Price Tracker</h1>
+      <p>Daily fuel price tracking across the United States</p>
+      <div class="meta">
+        <span id="last-updated">Loading...</span>
+        <span id="data-range"></span>
+      </div>
+    </header>
+
+    <div class="controls">
+      <select id="grade-select">
+        <option value="regular">Regular</option>
+        <option value="midGrade">Mid-Grade</option>
+        <option value="premium">Premium</option>
+        <option value="diesel">Diesel</option>
+        <option value="e85">E85</option>
+      </select>
+      <select id="state-select">
+        <option value="">National Average</option>
+      </select>
+      <button id="btn-add-compare" title="Add state to compare">+ Compare</button>
+      <div id="compare-tags" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+      <div style="flex:1"></div>
+      <button id="btn-7d" data-days="7">7D</button>
+      <button id="btn-30d" data-days="30">30D</button>
+      <button id="btn-90d" data-days="90">90D</button>
+      <button id="btn-all" data-days="0" class="active">All</button>
+    </div>
+
+    <div class="cards" id="price-cards">
+      <div class="loading">Loading prices...</div>
+    </div>
+
+    <div class="chart-container">
+      <h2 id="chart-title">Price History</h2>
+      <canvas id="price-chart"></canvas>
+    </div>
+
+    <div class="state-table-container">
+      <h2>State Prices — <span id="table-grade">Regular</span></h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>State</th>
+            <th>Price</th>
+            <th>vs National</th>
+          </tr>
+        </thead>
+        <tbody id="state-tbody">
+          <tr><td colspan="4" class="loading">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="api-info">
+      <h2>API Endpoints</h2>
+      <ul>
+        <li><code>GET /api/v1/latest.json</code> — Current prices (national + all states)</li>
+        <li><code>GET /api/v1/national.json</code> — Full national price history</li>
+        <li><code>GET /api/v1/states/{STATE_CODE}.json</code> — History for one state (e.g. CA, TX)</li>
+        <li><code>GET /api/v1/fuel/{grade}.json</code> — National history for one grade (regular, midGrade, premium, diesel, e85)</li>
+        <li><code>GET /api/v1/fuel/{grade}/states.json</code> — All states history for one grade</li>
+        <li><code>GET /api/v1/fuel/{grade}/states/{STATE_CODE}.json</code> — One grade, one state</li>
+      </ul>
+    </div>
+
+    <footer>
+      Data sourced from AAA. Updated daily via GitHub Actions.<br>
+      <a href="https://github.com/jacobschulman/gas-tracker" style="color:var(--accent)">GitHub</a>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script>
+    const STATE_NAMES = {AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',CO:'Colorado',CT:'Connecticut',DE:'Delaware',DC:'District of Columbia',FL:'Florida',GA:'Georgia',HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',KS:'Kansas',KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',MA:'Massachusetts',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MO:'Missouri',MT:'Montana',NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',NY:'New York',NC:'North Carolina',ND:'North Dakota',OH:'Ohio',OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VT:'Vermont',VA:'Virginia',WA:'Washington',WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming'};
+    const GRADE_LABELS = {regular:'Regular',midGrade:'Mid-Grade',premium:'Premium',diesel:'Diesel',e85:'E85'};
+
+    let nationalData = null;
+    let statesData = null;
+    let latestData = null;
+    let chart = null;
+    let selectedDays = 0;
+    let compareStates = []; // array of state codes to compare on chart
+
+    const CHART_COLORS = ['#6c9cfc','#f87171','#4ade80','#fbbf24','#c084fc','#fb923c','#22d3ee','#f472b6','#a3e635','#94a3b8'];
+
+    const BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? '' : '';
+
+    async function fetchJson(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed: ${url}`);
+      return res.json();
+    }
+
+    async function init() {
+      try {
+        [latestData, nationalData, statesData] = await Promise.all([
+          fetchJson(`${BASE}/api/v1/latest.json`),
+          fetchJson(`${BASE}/api/v1/national.json`),
+          fetchJson(`${BASE}/api/v1/states.json`),
+        ]);
+
+        document.getElementById('last-updated').textContent = `Updated: ${latestData.date}`;
+        document.getElementById('data-range').textContent = `${latestData.metadata.totalDays} days tracked (${latestData.metadata.firstDate} → ${latestData.metadata.lastDate})`;
+
+        // Populate state dropdown
+        const sel = document.getElementById('state-select');
+        const codes = Object.keys(STATE_NAMES).sort((a,b) => STATE_NAMES[a].localeCompare(STATE_NAMES[b]));
+        for (const code of codes) {
+          const opt = document.createElement('option');
+          opt.value = code;
+          opt.textContent = STATE_NAMES[code];
+          sel.appendChild(opt);
+        }
+
+        render();
+        setupListeners();
+      } catch (err) {
+        document.getElementById('price-cards').innerHTML = `<div class="error">Failed to load data. API may not be deployed yet.</div>`;
+        console.error(err);
+      }
+    }
+
+    function setupListeners() {
+      document.getElementById('grade-select').addEventListener('change', render);
+      document.getElementById('state-select').addEventListener('change', () => {
+        // When switching primary state, clear comparison
+        compareStates = [];
+        renderCompareTags();
+        render();
+      });
+      document.getElementById('btn-add-compare').addEventListener('click', () => {
+        const sel = document.getElementById('state-select');
+        const primary = sel.value;
+        // Show a quick picker: prompt for state code
+        const input = prompt('Enter state code to compare (e.g. CA, TX, GA):');
+        if (!input) return;
+        const code = input.trim().toUpperCase();
+        if (!STATE_NAMES[code]) { alert('Unknown state code: ' + code); return; }
+        if (code === primary) return;
+        if (compareStates.includes(code)) return;
+        if (compareStates.length >= 9) { alert('Max 9 comparison states'); return; }
+        compareStates.push(code);
+        renderCompareTags();
+        render();
+      });
+      document.querySelectorAll('[data-days]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-days]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedDays = parseInt(btn.dataset.days);
+          render();
+        });
+      });
+    }
+
+    function renderCompareTags() {
+      const container = document.getElementById('compare-tags');
+      container.innerHTML = compareStates.map((code, i) => {
+        const color = CHART_COLORS[(i + 1) % CHART_COLORS.length];
+        return `<span class="compare-tag" style="background:${color}22;color:${color};border:1px solid ${color}44">
+          ${code} <span class="remove" data-code="${code}">&times;</span>
+        </span>`;
+      }).join('');
+      container.querySelectorAll('.remove').forEach(el => {
+        el.addEventListener('click', () => {
+          compareStates = compareStates.filter(c => c !== el.dataset.code);
+          renderCompareTags();
+          render();
+        });
+      });
+    }
+
+    function render() {
+      const grade = document.getElementById('grade-select').value;
+      const stateCode = document.getElementById('state-select').value;
+      document.getElementById('table-grade').textContent = GRADE_LABELS[grade];
+      renderCards(grade, stateCode);
+      renderChart(grade, stateCode);
+      renderTable(grade);
+    }
+
+    function renderCards(grade, stateCode) {
+      const container = document.getElementById('price-cards');
+      const grades = ['regular', 'midGrade', 'premium', 'diesel'];
+      const isNational = !stateCode;
+
+      let currentPrices;
+      if (isNational) {
+        currentPrices = latestData.national;
+      } else {
+        currentPrices = latestData.states[stateCode];
+      }
+
+      if (!currentPrices) {
+        container.innerHTML = '<div class="loading">No data available</div>';
+        return;
+      }
+
+      // Find previous date for comparison
+      const dates = Object.keys(isNational ? nationalData.data : statesData.data).sort();
+      const latestDate = dates[dates.length - 1];
+      const prevDate = dates.length > 1 ? dates[dates.length - 2] : null;
+      let prevPrices = null;
+      if (prevDate) {
+        prevPrices = isNational
+          ? nationalData.data[prevDate]
+          : statesData.data[prevDate]?.[stateCode];
+      }
+
+      container.innerHTML = grades.map(g => {
+        const price = currentPrices[g];
+        if (price == null) return '';
+        const prev = prevPrices?.[g];
+        let changeHtml = '';
+        if (prev != null) {
+          const diff = price - prev;
+          const cls = diff > 0 ? 'up' : diff < 0 ? 'down' : '';
+          changeHtml = `<div class="change ${cls}">${diff > 0 ? '↑' : diff < 0 ? '↓' : '—'} $${Math.abs(diff).toFixed(3)} vs ${prevDate}</div>`;
+        }
+        return `<div class="card">
+          <div class="label">${GRADE_LABELS[g]}</div>
+          <div class="price">$${price.toFixed(3)}</div>
+          ${changeHtml}
+        </div>`;
+      }).join('');
+    }
+
+    function getSeriesForSource(grade, stateCode) {
+      const series = {};
+      if (!stateCode) {
+        for (const [date, prices] of Object.entries(nationalData.data)) {
+          if (prices[grade] != null) series[date] = prices[grade];
+        }
+      } else {
+        for (const [date, states] of Object.entries(statesData.data)) {
+          if (states[stateCode]?.[grade] != null) series[date] = states[stateCode][grade];
+        }
+      }
+      return series;
+    }
+
+    function renderChart(grade, stateCode) {
+      const isNational = !stateCode;
+      const hasCompare = compareStates.length > 0;
+
+      let title = isNational
+        ? `National ${GRADE_LABELS[grade]} Price History`
+        : `${STATE_NAMES[stateCode]} ${GRADE_LABELS[grade]} Price History`;
+      if (hasCompare) title += ' (comparison)';
+      document.getElementById('chart-title').textContent = title;
+
+      // Build all series to find the union of all dates
+      const allSeries = [];
+      const primaryLabel = isNational ? 'National' : STATE_NAMES[stateCode];
+      allSeries.push({ label: primaryLabel, code: stateCode, series: getSeriesForSource(grade, stateCode) });
+      for (const code of compareStates) {
+        allSeries.push({ label: STATE_NAMES[code], code, series: getSeriesForSource(grade, code) });
+      }
+
+      // Union of all dates
+      const allDatesSet = new Set();
+      for (const s of allSeries) {
+        for (const d of Object.keys(s.series)) allDatesSet.add(d);
+      }
+      let allDates = [...allDatesSet].sort();
+
+      if (selectedDays > 0) {
+        const cutoff = new Date();
+        cutoff.setDate(cutoff.getDate() - selectedDays);
+        const cutoffStr = cutoff.toISOString().split('T')[0];
+        allDates = allDates.filter(d => d >= cutoffStr);
+      }
+
+      const datasets = allSeries.map((s, i) => ({
+        label: `${s.label} ${GRADE_LABELS[grade]} ($/gal)`,
+        data: allDates.map(d => s.series[d] ?? null),
+        borderColor: CHART_COLORS[i % CHART_COLORS.length],
+        backgroundColor: CHART_COLORS[i % CHART_COLORS.length] + '1a',
+        fill: allSeries.length === 1,
+        tension: 0.3,
+        pointRadius: allDates.length > 60 ? 0 : 4,
+        pointHoverRadius: 6,
+        spanGaps: true,
+      }));
+
+      const ctx = document.getElementById('price-chart').getContext('2d');
+      if (chart) chart.destroy();
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: { labels: allDates, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: allSeries.length > 1, labels: { color: '#8b8fa3' } },
+            tooltip: {
+              callbacks: {
+                label: ctx => `${ctx.dataset.label.split(' (')[0]}: $${ctx.parsed.y.toFixed(3)}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: '#8b8fa3', maxTicksLimit: 12 },
+              grid: { color: 'rgba(42,45,58,0.5)' },
+            },
+            y: {
+              ticks: {
+                color: '#8b8fa3',
+                callback: v => '$' + v.toFixed(2),
+              },
+              grid: { color: 'rgba(42,45,58,0.5)' },
+            }
+          }
+        }
+      });
+    }
+
+    function renderTable(grade) {
+      const tbody = document.getElementById('state-tbody');
+      const latestDate = latestData.date;
+      const stateEntries = latestData.states;
+      if (!stateEntries || Object.keys(stateEntries).length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="loading">No state data</td></tr>';
+        return;
+      }
+
+      const nationalPrice = latestData.national?.[grade];
+
+      const rows = Object.entries(stateEntries)
+        .map(([code, prices]) => ({ code, name: STATE_NAMES[code] || code, price: prices[grade] }))
+        .filter(r => r.price != null)
+        .sort((a, b) => b.price - a.price);
+
+      tbody.innerHTML = rows.map((r, i) => {
+        const diff = nationalPrice ? r.price - nationalPrice : null;
+        const diffStr = diff != null
+          ? `<span class="${diff > 0 ? 'high' : 'low'}">${diff > 0 ? '+' : ''}$${diff.toFixed(3)}</span>`
+          : '—';
+        return `<tr>
+          <td class="rank">${i + 1}</td>
+          <td>${r.name} (${r.code})</td>
+          <td class="price-cell">$${r.price.toFixed(3)}</td>
+          <td>${diffStr}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    init();
+  </script>
+</body>
+</html>

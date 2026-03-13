@@ -1,0 +1,17 @@
+{
+  "state": "WA",
+  "data": {
+    "2026-03-13": {
+      "regular": 4.76,
+      "midGrade": 5.019,
+      "premium": 5.259,
+      "diesel": 5.799
+    }
+  },
+  "metadata": {
+    "lastUpdated": "2026-03-13T22:32:45.601Z",
+    "totalDays": 5,
+    "firstDate": "2025-03-13",
+    "lastDate": "2026-03-13"
+  }
+}

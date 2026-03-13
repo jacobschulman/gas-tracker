@@ -1,0 +1,17 @@
+{
+  "state": "MI",
+  "data": {
+    "2026-03-13": {
+      "regular": 3.59,
+      "midGrade": 4.162,
+      "premium": 4.725,
+      "diesel": 4.849
+    }
+  },
+  "metadata": {
+    "lastUpdated": "2026-03-13T22:32:45.601Z",
+    "totalDays": 5,
+    "firstDate": "2025-03-13",
+    "lastDate": "2026-03-13"
+  }
+}

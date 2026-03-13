@@ -1,0 +1,17 @@
+{
+  "state": "CA",
+  "data": {
+    "2026-03-13": {
+      "regular": 5.416,
+      "midGrade": 5.635,
+      "premium": 5.82,
+      "diesel": 6.268
+    }
+  },
+  "metadata": {
+    "lastUpdated": "2026-03-13T22:32:45.601Z",
+    "totalDays": 5,
+    "firstDate": "2025-03-13",
+    "lastDate": "2026-03-13"
+  }
+}

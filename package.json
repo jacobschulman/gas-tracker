@@ -1,0 +1,34 @@
+{
+  "name": "gas-tracker",
+  "version": "1.0.0",
+  "description": "Daily fuel price tracker for the United States",
+  "main": "dist/main.js",
+  "scripts": {
+    "scrape": "ts-node src/main.ts",
+    "scrape:quick": "ts-node src/main.ts --quick",
+    "scrape:backfill": "ts-node src/main.ts --backfill",
+    "api": "ts-node src/api-generator.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobschulman/gas-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jacobschulman/gas-tracker/issues"
+  },
+  "homepage": "https://github.com/jacobschulman/gas-tracker#readme",
+  "dependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^25.5.0",
+    "@types/node-fetch": "^2.6.13",
+    "cheerio": "^1.2.0",
+    "node-fetch": "^2.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
