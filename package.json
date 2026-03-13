@@ -9,7 +9,8 @@
     "scrape:backfill": "ts-node src/main.ts --backfill",
     "api": "ts-node src/api-generator.ts",
     "backfill:eia": "ts-node src/eia-backfill.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "sync": "git pull --rebase origin main"
   },
   "repository": {
     "type": "git",

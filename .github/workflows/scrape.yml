@@ -45,7 +45,13 @@ jobs:
           git add data/ api/
           if git diff --staged --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "data: update gas prices $(date -u +%Y-%m-%d)"
-            git push
+            exit 0
           fi
+          git commit -m "data: update gas prices $(date -u +%Y-%m-%d)"
+          # Pull with rebase to handle any commits pushed while we were scraping
+          # Retry up to 3 times in case of concurrent pushes
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push failed (attempt $i), retrying..."
+            sleep 5
+          done
