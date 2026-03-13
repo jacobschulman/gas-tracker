@@ -1,0 +1,9 @@
+{
+  "date": "2025-04-07",
+  "prices": {
+    "regular": 3.243,
+    "midGrade": 3.815,
+    "premium": 4.174,
+    "diesel": 3.639
+  }
+}

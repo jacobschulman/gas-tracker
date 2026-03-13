@@ -8,6 +8,7 @@
     "scrape:quick": "ts-node src/main.ts --quick",
     "scrape:backfill": "ts-node src/main.ts --backfill",
     "api": "ts-node src/api-generator.ts",
+    "backfill:eia": "ts-node src/eia-backfill.ts",
     "build": "tsc"
   },
   "repository": {

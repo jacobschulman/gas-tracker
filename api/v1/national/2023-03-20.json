@@ -1,0 +1,9 @@
+{
+  "date": "2023-03-20",
+  "prices": {
+    "regular": 3.422,
+    "midGrade": 3.935,
+    "premium": 4.247,
+    "diesel": 4.185
+  }
+}

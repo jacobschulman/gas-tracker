@@ -1,0 +1,9 @@
+{
+  "date": "2026-02-16",
+  "prices": {
+    "regular": 2.924,
+    "midGrade": 3.536,
+    "premium": 3.901,
+    "diesel": 3.711
+  }
+}
