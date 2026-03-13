@@ -174,7 +174,9 @@
       <button id="btn-7d" data-days="7">7D</button>
       <button id="btn-30d" data-days="30">30D</button>
       <button id="btn-90d" data-days="90">90D</button>
+      <button id="btn-1y" data-days="365">1Y</button>
       <button id="btn-all" data-days="0" class="active">All</button>
+      <button id="btn-share" title="Copy shareable link">Share</button>
     </div>
 
     <div class="cards" id="price-cards">
@@ -238,6 +240,29 @@
     // Use relative paths so it works on both localhost and GitHub Pages (project sites)
     const BASE = './api/v1';
 
+    function readUrlParams() {
+      const p = new URLSearchParams(window.location.search);
+      return {
+        grade: p.get('grade') || 'regular',
+        state: p.get('state') || '',
+        compare: p.get('compare') ? p.get('compare').split(',').filter(c => STATE_NAMES[c]) : [],
+        days: p.has('days') ? parseInt(p.get('days'), 10) : 0,
+      };
+    }
+
+    function updateUrl() {
+      const grade = document.getElementById('grade-select').value;
+      const state = document.getElementById('state-select').value;
+      const p = new URLSearchParams();
+      if (grade !== 'regular') p.set('grade', grade);
+      if (state) p.set('state', state);
+      if (compareStates.length > 0) p.set('compare', compareStates.join(','));
+      if (selectedDays > 0) p.set('days', String(selectedDays));
+      const qs = p.toString();
+      const url = window.location.pathname + (qs ? '?' + qs : '');
+      history.replaceState(null, '', url);
+    }
+
     async function fetchJson(url) {
       const res = await fetch(url);
       if (!res.ok) throw new Error(`Failed: ${url}`);
@@ -264,6 +289,18 @@
           opt.textContent = STATE_NAMES[code];
           sel.appendChild(opt);
         }
+
+        // Apply URL params
+        const params = readUrlParams();
+        document.getElementById('grade-select').value = params.grade;
+        sel.value = params.state;
+        compareStates = params.compare;
+        selectedDays = params.days;
+        renderCompareTags();
+        // Highlight the correct time button
+        document.querySelectorAll('[data-days]').forEach(b => {
+          b.classList.toggle('active', parseInt(b.dataset.days) === selectedDays);
+        });
 
         render();
         setupListeners();
@@ -304,6 +341,13 @@
           render();
         });
       });
+      document.getElementById('btn-share').addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          const btn = document.getElementById('btn-share');
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Share'; }, 2000);
+        });
+      });
     }
 
     function renderCompareTags() {
@@ -330,6 +374,7 @@
       renderCards(grade, stateCode);
       renderChart(grade, stateCode);
       renderTable(grade);
+      updateUrl();
     }
 
     function renderCards(grade, stateCode) {
