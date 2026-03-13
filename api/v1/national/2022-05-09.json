@@ -1,0 +1,9 @@
+{
+  "date": "2022-05-09",
+  "prices": {
+    "regular": 4.328,
+    "midGrade": 4.779,
+    "premium": 5.07,
+    "diesel": 5.623
+  }
+}

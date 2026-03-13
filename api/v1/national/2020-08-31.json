@@ -1,0 +1,9 @@
+{
+  "date": "2020-08-31",
+  "prices": {
+    "regular": 2.222,
+    "midGrade": 2.629,
+    "premium": 2.877,
+    "diesel": 2.441
+  }
+}

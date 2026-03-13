@@ -972,12 +972,948 @@
       "midGrade": null,
       "premium": 4.215,
       "diesel": null
+    },
+    "2020-03-16": {
+      "regular": 2.303,
+      "midGrade": 2.681,
+      "premium": 2.865,
+      "diesel": null
+    },
+    "2020-03-23": {
+      "regular": 2.175,
+      "midGrade": 2.576,
+      "premium": 2.762,
+      "diesel": null
+    },
+    "2020-03-30": {
+      "regular": 2.054,
+      "midGrade": 2.483,
+      "premium": 2.669,
+      "diesel": null
+    },
+    "2020-04-06": {
+      "regular": 1.975,
+      "midGrade": 2.442,
+      "premium": 2.62,
+      "diesel": null
+    },
+    "2020-04-13": {
+      "regular": 1.906,
+      "midGrade": 2.384,
+      "premium": 2.562,
+      "diesel": null
+    },
+    "2020-04-20": {
+      "regular": 1.869,
+      "midGrade": 2.308,
+      "premium": 2.518,
+      "diesel": null
+    },
+    "2020-04-27": {
+      "regular": 1.849,
+      "midGrade": 2.262,
+      "premium": 2.47,
+      "diesel": null
+    },
+    "2020-05-04": {
+      "regular": 1.844,
+      "midGrade": 2.26,
+      "premium": 2.458,
+      "diesel": null
+    },
+    "2020-05-11": {
+      "regular": 1.879,
+      "midGrade": 2.26,
+      "premium": 2.473,
+      "diesel": null
+    },
+    "2020-05-18": {
+      "regular": 1.903,
+      "midGrade": 2.3,
+      "premium": 2.498,
+      "diesel": null
+    },
+    "2020-05-25": {
+      "regular": 1.953,
+      "midGrade": 2.336,
+      "premium": 2.539,
+      "diesel": null
+    },
+    "2020-06-01": {
+      "regular": 1.961,
+      "midGrade": 2.341,
+      "premium": 2.543,
+      "diesel": null
+    },
+    "2020-06-08": {
+      "regular": 1.999,
+      "midGrade": 2.367,
+      "premium": 2.57,
+      "diesel": null
+    },
+    "2020-06-15": {
+      "regular": 2.013,
+      "midGrade": 2.368,
+      "premium": 2.572,
+      "diesel": null
+    },
+    "2020-06-22": {
+      "regular": 2.037,
+      "midGrade": 2.39,
+      "premium": 2.598,
+      "diesel": null
+    },
+    "2020-06-29": {
+      "regular": 2.078,
+      "midGrade": 2.407,
+      "premium": 2.608,
+      "diesel": null
+    },
+    "2020-07-06": {
+      "regular": 2.083,
+      "midGrade": 2.406,
+      "premium": 2.609,
+      "diesel": null
+    },
+    "2020-07-13": {
+      "regular": 2.086,
+      "midGrade": 2.4,
+      "premium": 2.606,
+      "diesel": null
+    },
+    "2020-07-20": {
+      "regular": 2.094,
+      "midGrade": 2.412,
+      "premium": 2.617,
+      "diesel": null
+    },
+    "2020-07-27": {
+      "regular": 2.089,
+      "midGrade": 2.416,
+      "premium": 2.614,
+      "diesel": null
+    },
+    "2020-08-03": {
+      "regular": 2.09,
+      "midGrade": 2.412,
+      "premium": 2.612,
+      "diesel": null
+    },
+    "2020-08-10": {
+      "regular": 2.088,
+      "midGrade": 2.402,
+      "premium": 2.61,
+      "diesel": null
+    },
+    "2020-08-17": {
+      "regular": 2.085,
+      "midGrade": 2.409,
+      "premium": 2.611,
+      "diesel": null
+    },
+    "2020-08-24": {
+      "regular": 2.082,
+      "midGrade": 2.409,
+      "premium": 2.611,
+      "diesel": null
+    },
+    "2020-08-31": {
+      "regular": 2.132,
+      "midGrade": 2.443,
+      "premium": 2.648,
+      "diesel": null
+    },
+    "2020-09-07": {
+      "regular": 2.106,
+      "midGrade": 2.397,
+      "premium": 2.613,
+      "diesel": null
+    },
+    "2020-09-14": {
+      "regular": 2.096,
+      "midGrade": 2.424,
+      "premium": 2.63,
+      "diesel": null
+    },
+    "2020-09-21": {
+      "regular": 2.09,
+      "midGrade": 2.425,
+      "premium": 2.633,
+      "diesel": null
+    },
+    "2020-09-28": {
+      "regular": 2.079,
+      "midGrade": 2.427,
+      "premium": 2.632,
+      "diesel": null
+    },
+    "2020-10-05": {
+      "regular": 2.064,
+      "midGrade": 2.423,
+      "premium": 2.632,
+      "diesel": null
+    },
+    "2020-10-12": {
+      "regular": 2.07,
+      "midGrade": 2.422,
+      "premium": 2.628,
+      "diesel": null
+    },
+    "2020-10-19": {
+      "regular": 2.06,
+      "midGrade": 2.417,
+      "premium": 2.629,
+      "diesel": null
+    },
+    "2020-10-26": {
+      "regular": 2.053,
+      "midGrade": 2.412,
+      "premium": 2.62,
+      "diesel": null
+    },
+    "2020-11-02": {
+      "regular": 2.041,
+      "midGrade": 2.421,
+      "premium": 2.617,
+      "diesel": null
+    },
+    "2020-11-09": {
+      "regular": 2.04,
+      "midGrade": 2.411,
+      "premium": 2.614,
+      "diesel": null
+    },
+    "2020-11-16": {
+      "regular": 2.046,
+      "midGrade": 2.403,
+      "premium": 2.616,
+      "diesel": null
+    },
+    "2020-11-23": {
+      "regular": 2.037,
+      "midGrade": 2.4,
+      "premium": 2.61,
+      "diesel": null
+    },
+    "2020-11-30": {
+      "regular": 2.05,
+      "midGrade": 2.405,
+      "premium": 2.617,
+      "diesel": null
+    },
+    "2020-12-07": {
+      "regular": 2.076,
+      "midGrade": 2.425,
+      "premium": 2.639,
+      "diesel": null
+    },
+    "2020-12-14": {
+      "regular": 2.121,
+      "midGrade": 2.464,
+      "premium": 2.672,
+      "diesel": null
+    },
+    "2020-12-21": {
+      "regular": 2.172,
+      "midGrade": 2.495,
+      "premium": 2.704,
+      "diesel": null
+    },
+    "2020-12-28": {
+      "regular": 2.191,
+      "midGrade": 2.505,
+      "premium": 2.718,
+      "diesel": null
+    },
+    "2021-01-04": {
+      "regular": 2.215,
+      "midGrade": 2.532,
+      "premium": 2.738,
+      "diesel": null
+    },
+    "2021-01-11": {
+      "regular": 2.268,
+      "midGrade": 2.6,
+      "premium": 2.797,
+      "diesel": null
+    },
+    "2021-01-18": {
+      "regular": 2.334,
+      "midGrade": 2.649,
+      "premium": 2.838,
+      "diesel": null
+    },
+    "2021-01-25": {
+      "regular": 2.357,
+      "midGrade": 2.668,
+      "premium": 2.859,
+      "diesel": null
+    },
+    "2021-02-01": {
+      "regular": 2.379,
+      "midGrade": 2.669,
+      "premium": 2.879,
+      "diesel": null
+    },
+    "2021-02-08": {
+      "regular": 2.424,
+      "midGrade": 2.733,
+      "premium": 2.944,
+      "diesel": null
+    },
+    "2021-02-15": {
+      "regular": 2.459,
+      "midGrade": 2.766,
+      "premium": 2.969,
+      "diesel": null
+    },
+    "2021-02-22": {
+      "regular": 2.546,
+      "midGrade": 2.86,
+      "premium": 3.062,
+      "diesel": null
+    },
+    "2021-03-01": {
+      "regular": 2.627,
+      "midGrade": 2.927,
+      "premium": 3.117,
+      "diesel": null
+    },
+    "2021-03-08": {
+      "regular": 2.671,
+      "midGrade": 2.979,
+      "premium": 3.172,
+      "diesel": null
+    },
+    "2021-03-15": {
+      "regular": 2.738,
+      "midGrade": 3.04,
+      "premium": 3.229,
+      "diesel": null
+    },
+    "2021-03-22": {
+      "regular": 2.758,
+      "midGrade": 3.063,
+      "premium": 3.251,
+      "diesel": null
+    },
+    "2021-03-29": {
+      "regular": 2.74,
+      "midGrade": 3.055,
+      "premium": 3.235,
+      "diesel": null
+    },
+    "2021-04-05": {
+      "regular": 2.744,
+      "midGrade": 3.055,
+      "premium": 3.232,
+      "diesel": null
+    },
+    "2021-04-12": {
+      "regular": 2.72,
+      "midGrade": 3.039,
+      "premium": 3.218,
+      "diesel": null
+    },
+    "2021-04-19": {
+      "regular": 2.737,
+      "midGrade": 3.042,
+      "premium": 3.219,
+      "diesel": null
+    },
+    "2021-04-26": {
+      "regular": 2.752,
+      "midGrade": 3.056,
+      "premium": 3.234,
+      "diesel": null
+    },
+    "2021-05-03": {
+      "regular": 2.782,
+      "midGrade": 3.083,
+      "premium": 3.266,
+      "diesel": null
+    },
+    "2021-05-10": {
+      "regular": 2.837,
+      "midGrade": 3.124,
+      "premium": 3.319,
+      "diesel": null
+    },
+    "2021-05-17": {
+      "regular": 2.888,
+      "midGrade": 3.174,
+      "premium": 3.363,
+      "diesel": null
+    },
+    "2021-05-24": {
+      "regular": 2.898,
+      "midGrade": 3.189,
+      "premium": 3.382,
+      "diesel": null
+    },
+    "2021-05-31": {
+      "regular": 2.898,
+      "midGrade": 3.194,
+      "premium": 3.39,
+      "diesel": null
+    },
+    "2021-06-07": {
+      "regular": 2.911,
+      "midGrade": 3.205,
+      "premium": 3.404,
+      "diesel": null
+    },
+    "2021-06-14": {
+      "regular": 2.92,
+      "midGrade": 3.214,
+      "premium": 3.417,
+      "diesel": null
+    },
+    "2021-06-21": {
+      "regular": 2.932,
+      "midGrade": 3.229,
+      "premium": 3.436,
+      "diesel": null
+    },
+    "2021-06-28": {
+      "regular": 2.959,
+      "midGrade": 3.267,
+      "premium": 3.469,
+      "diesel": null
+    },
+    "2021-07-05": {
+      "regular": 2.994,
+      "midGrade": 3.297,
+      "premium": 3.499,
+      "diesel": null
+    },
+    "2021-07-12": {
+      "regular": 3.005,
+      "midGrade": 3.295,
+      "premium": 3.497,
+      "diesel": null
+    },
+    "2021-07-19": {
+      "regular": 3.013,
+      "midGrade": 3.297,
+      "premium": 3.511,
+      "diesel": null
+    },
+    "2021-07-26": {
+      "regular": 3.002,
+      "midGrade": 3.298,
+      "premium": 3.508,
+      "diesel": null
+    },
+    "2021-08-02": {
+      "regular": 3.012,
+      "midGrade": 3.321,
+      "premium": 3.527,
+      "diesel": null
+    },
+    "2021-08-09": {
+      "regular": 3.022,
+      "midGrade": 3.328,
+      "premium": 3.538,
+      "diesel": null
+    },
+    "2021-08-16": {
+      "regular": 3.026,
+      "midGrade": 3.339,
+      "premium": 3.55,
+      "diesel": null
+    },
+    "2021-08-23": {
+      "regular": 3.024,
+      "midGrade": 3.349,
+      "premium": 3.548,
+      "diesel": null
+    },
+    "2021-08-30": {
+      "regular": 3.031,
+      "midGrade": 3.349,
+      "premium": 3.561,
+      "diesel": null
+    },
+    "2021-09-06": {
+      "regular": 3.071,
+      "midGrade": 3.379,
+      "premium": 3.592,
+      "diesel": null
+    },
+    "2021-09-13": {
+      "regular": 3.072,
+      "midGrade": 3.371,
+      "premium": 3.595,
+      "diesel": null
+    },
+    "2021-09-20": {
+      "regular": 3.079,
+      "midGrade": 3.376,
+      "premium": 3.599,
+      "diesel": null
+    },
+    "2021-09-27": {
+      "regular": 3.076,
+      "midGrade": 3.38,
+      "premium": 3.6,
+      "diesel": null
+    },
+    "2021-10-04": {
+      "regular": 3.078,
+      "midGrade": 3.381,
+      "premium": 3.606,
+      "diesel": null
+    },
+    "2021-10-11": {
+      "regular": 3.181,
+      "midGrade": 3.46,
+      "premium": 3.691,
+      "diesel": null
+    },
+    "2021-10-18": {
+      "regular": 3.276,
+      "midGrade": 3.554,
+      "premium": 3.785,
+      "diesel": null
+    },
+    "2021-10-25": {
+      "regular": 3.355,
+      "midGrade": 3.634,
+      "premium": 3.863,
+      "diesel": null
+    },
+    "2021-11-01": {
+      "regular": 3.38,
+      "midGrade": 3.657,
+      "premium": 3.888,
+      "diesel": null
+    },
+    "2021-11-08": {
+      "regular": 3.404,
+      "midGrade": 3.669,
+      "premium": 3.904,
+      "diesel": null
+    },
+    "2021-11-15": {
+      "regular": 3.401,
+      "midGrade": 3.679,
+      "premium": 3.907,
+      "diesel": null
+    },
+    "2021-11-22": {
+      "regular": 3.396,
+      "midGrade": 3.687,
+      "premium": 3.908,
+      "diesel": null
+    },
+    "2021-11-29": {
+      "regular": 3.392,
+      "midGrade": 3.681,
+      "premium": 3.909,
+      "diesel": null
+    },
+    "2021-12-06": {
+      "regular": 3.373,
+      "midGrade": 3.668,
+      "premium": 3.896,
+      "diesel": null
+    },
+    "2021-12-13": {
+      "regular": 3.355,
+      "midGrade": 3.661,
+      "premium": 3.886,
+      "diesel": null
+    },
+    "2021-12-20": {
+      "regular": 3.35,
+      "midGrade": 3.661,
+      "premium": 3.887,
+      "diesel": null
+    },
+    "2021-12-27": {
+      "regular": 3.355,
+      "midGrade": 3.661,
+      "premium": 3.891,
+      "diesel": null
+    },
+    "2022-01-03": {
+      "regular": 3.346,
+      "midGrade": 3.651,
+      "premium": 3.882,
+      "diesel": null
+    },
+    "2022-01-10": {
+      "regular": 3.33,
+      "midGrade": 3.638,
+      "premium": 3.866,
+      "diesel": null
+    },
+    "2022-01-17": {
+      "regular": 3.301,
+      "midGrade": 3.637,
+      "premium": 3.866,
+      "diesel": null
+    },
+    "2022-01-24": {
+      "regular": 3.288,
+      "midGrade": 3.618,
+      "premium": 3.858,
+      "diesel": null
+    },
+    "2022-01-31": {
+      "regular": 3.323,
+      "midGrade": 3.627,
+      "premium": 3.859,
+      "diesel": null
+    },
+    "2022-02-07": {
+      "regular": 3.39,
+      "midGrade": 3.697,
+      "premium": 3.926,
+      "diesel": null
+    },
+    "2022-02-14": {
+      "regular": 3.444,
+      "midGrade": 3.765,
+      "premium": 3.99,
+      "diesel": null
+    },
+    "2022-02-21": {
+      "regular": 3.512,
+      "midGrade": 3.849,
+      "premium": 4.067,
+      "diesel": null
+    },
+    "2022-02-28": {
+      "regular": 3.581,
+      "midGrade": 3.913,
+      "premium": 4.128,
+      "diesel": null
+    },
+    "2022-03-07": {
+      "regular": 4.176,
+      "midGrade": 4.464,
+      "premium": 4.69,
+      "diesel": null
+    },
+    "2022-03-14": {
+      "regular": 4.296,
+      "midGrade": 4.62,
+      "premium": 4.848,
+      "diesel": null
+    },
+    "2022-03-21": {
+      "regular": 4.2,
+      "midGrade": 4.592,
+      "premium": 4.802,
+      "diesel": null
+    },
+    "2022-03-28": {
+      "regular": 4.175,
+      "midGrade": 4.568,
+      "premium": 4.785,
+      "diesel": null
+    },
+    "2022-04-04": {
+      "regular": 4.103,
+      "midGrade": 4.491,
+      "premium": 4.711,
+      "diesel": null
+    },
+    "2022-04-11": {
+      "regular": 4.038,
+      "midGrade": 4.453,
+      "premium": 4.657,
+      "diesel": null
+    },
+    "2022-04-18": {
+      "regular": 4.027,
+      "midGrade": 4.42,
+      "premium": 4.626,
+      "diesel": null
+    },
+    "2022-04-25": {
+      "regular": 4.094,
+      "midGrade": 4.49,
+      "premium": 4.697,
+      "diesel": null
+    },
+    "2022-05-02": {
+      "regular": 4.19,
+      "midGrade": 4.565,
+      "premium": 4.779,
+      "diesel": null
+    },
+    "2022-05-09": {
+      "regular": 4.397,
+      "midGrade": 4.736,
+      "premium": 4.979,
+      "diesel": null
+    },
+    "2022-05-16": {
+      "regular": 4.647,
+      "midGrade": 4.981,
+      "premium": 5.217,
+      "diesel": null
+    },
+    "2022-05-23": {
+      "regular": 4.711,
+      "midGrade": 5.06,
+      "premium": 5.311,
+      "diesel": null
+    },
+    "2022-05-30": {
+      "regular": 4.724,
+      "midGrade": 5.092,
+      "premium": 5.344,
+      "diesel": null
+    },
+    "2022-06-06": {
+      "regular": 4.977,
+      "midGrade": 5.326,
+      "premium": 5.619,
+      "diesel": null
+    },
+    "2022-06-13": {
+      "regular": 5.04,
+      "midGrade": 5.409,
+      "premium": 5.703,
+      "diesel": null
+    },
+    "2022-06-20": {
+      "regular": 4.956,
+      "midGrade": 5.368,
+      "premium": 5.653,
+      "diesel": null
+    },
+    "2022-06-27": {
+      "regular": 4.865,
+      "midGrade": 5.295,
+      "premium": 5.577,
+      "diesel": null
+    },
+    "2022-07-04": {
+      "regular": 4.784,
+      "midGrade": 5.231,
+      "premium": 5.518,
+      "diesel": null
+    },
+    "2022-07-11": {
+      "regular": 4.641,
+      "midGrade": 5.081,
+      "premium": 5.365,
+      "diesel": null
+    },
+    "2022-07-18": {
+      "regular": 4.539,
+      "midGrade": 5.021,
+      "premium": 5.294,
+      "diesel": null
+    },
+    "2022-07-25": {
+      "regular": 4.44,
+      "midGrade": 4.903,
+      "premium": 5.185,
+      "diesel": null
+    },
+    "2022-08-01": {
+      "regular": 4.398,
+      "midGrade": 4.875,
+      "premium": 5.159,
+      "diesel": null
+    },
+    "2022-08-08": {
+      "regular": 4.328,
+      "midGrade": 4.824,
+      "premium": 5.099,
+      "diesel": null
+    },
+    "2022-08-15": {
+      "regular": 4.202,
+      "midGrade": 4.722,
+      "premium": 4.992,
+      "diesel": null
+    },
+    "2022-08-22": {
+      "regular": 4.113,
+      "midGrade": 4.635,
+      "premium": 4.916,
+      "diesel": null
+    },
+    "2022-08-29": {
+      "regular": 4.007,
+      "midGrade": 4.528,
+      "premium": 4.82,
+      "diesel": null
+    },
+    "2022-09-05": {
+      "regular": 3.856,
+      "midGrade": 4.373,
+      "premium": 4.664,
+      "diesel": null
+    },
+    "2022-09-12": {
+      "regular": 3.734,
+      "midGrade": 4.285,
+      "premium": 4.549,
+      "diesel": null
+    },
+    "2022-09-19": {
+      "regular": 3.628,
+      "midGrade": 4.178,
+      "premium": 4.471,
+      "diesel": null
+    },
+    "2022-09-26": {
+      "regular": 3.512,
+      "midGrade": 4.059,
+      "premium": 4.346,
+      "diesel": null
+    },
+    "2022-10-03": {
+      "regular": 3.435,
+      "midGrade": 3.977,
+      "premium": 4.268,
+      "diesel": null
+    },
+    "2022-10-10": {
+      "regular": 3.54,
+      "midGrade": 4.023,
+      "premium": 4.315,
+      "diesel": null
+    },
+    "2022-10-17": {
+      "regular": 3.577,
+      "midGrade": 4.065,
+      "premium": 4.364,
+      "diesel": null
+    },
+    "2022-10-24": {
+      "regular": 3.535,
+      "midGrade": 4.029,
+      "premium": 4.341,
+      "diesel": null
+    },
+    "2022-10-31": {
+      "regular": 3.733,
+      "midGrade": 4.179,
+      "premium": 4.492,
+      "diesel": null
+    },
+    "2022-11-07": {
+      "regular": 3.819,
+      "midGrade": 4.263,
+      "premium": 4.588,
+      "diesel": null
+    },
+    "2022-11-14": {
+      "regular": 3.813,
+      "midGrade": 4.268,
+      "premium": 4.592,
+      "diesel": null
+    },
+    "2022-11-21": {
+      "regular": 3.776,
+      "midGrade": 4.25,
+      "premium": 4.597,
+      "diesel": null
+    },
+    "2022-11-28": {
+      "regular": 3.69,
+      "midGrade": 4.221,
+      "premium": 4.581,
+      "diesel": null
+    },
+    "2022-12-05": {
+      "regular": 3.595,
+      "midGrade": 4.144,
+      "premium": 4.487,
+      "diesel": null
+    },
+    "2022-12-12": {
+      "regular": 3.467,
+      "midGrade": 3.999,
+      "premium": 4.353,
+      "diesel": null
+    },
+    "2022-12-19": {
+      "regular": 3.349,
+      "midGrade": 3.856,
+      "premium": 4.237,
+      "diesel": null
+    },
+    "2022-12-26": {
+      "regular": 3.301,
+      "midGrade": 3.805,
+      "premium": 4.17,
+      "diesel": null
+    },
+    "2023-01-02": {
+      "regular": 3.301,
+      "midGrade": 3.806,
+      "premium": 4.171,
+      "diesel": null
+    },
+    "2023-01-09": {
+      "regular": 3.266,
+      "midGrade": 3.777,
+      "premium": 4.151,
+      "diesel": null
+    },
+    "2023-01-16": {
+      "regular": 3.256,
+      "midGrade": 3.736,
+      "premium": 4.13,
+      "diesel": null
+    },
+    "2023-01-23": {
+      "regular": 3.345,
+      "midGrade": 3.799,
+      "premium": 4.178,
+      "diesel": null
+    },
+    "2023-01-30": {
+      "regular": 3.38,
+      "midGrade": 3.846,
+      "premium": 4.221,
+      "diesel": null
+    },
+    "2023-02-06": {
+      "regular": 3.366,
+      "midGrade": 3.838,
+      "premium": 4.215,
+      "diesel": null
+    },
+    "2023-02-13": {
+      "regular": 3.341,
+      "midGrade": 3.821,
+      "premium": 4.182,
+      "diesel": null
+    },
+    "2023-02-20": {
+      "regular": 3.299,
+      "midGrade": 3.807,
+      "premium": 4.169,
+      "diesel": null
+    },
+    "2023-02-27": {
+      "regular": 3.217,
+      "midGrade": 3.737,
+      "premium": 4.111,
+      "diesel": null
+    },
+    "2023-03-06": {
+      "regular": 3.232,
+      "midGrade": 3.73,
+      "premium": 4.099,
+      "diesel": null
     }
   },
   "metadata": {
-    "lastUpdated": "2026-03-13T23:30:09.013Z",
-    "totalDays": 162,
-    "firstDate": "2023-03-13",
+    "lastUpdated": "2026-03-13T23:50:50.535Z",
+    "totalDays": 318,
+    "firstDate": "2020-03-16",
     "lastDate": "2026-03-13"
   }
 }

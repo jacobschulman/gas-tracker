@@ -1,0 +1,9 @@
+{
+  "date": "2021-01-18",
+  "prices": {
+    "regular": 2.379,
+    "midGrade": 2.759,
+    "premium": 3.014,
+    "diesel": 2.696
+  }
+}
