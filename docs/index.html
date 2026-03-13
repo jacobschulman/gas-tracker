@@ -235,8 +235,8 @@
 
     const CHART_COLORS = ['#6c9cfc','#f87171','#4ade80','#fbbf24','#c084fc','#fb923c','#22d3ee','#f472b6','#a3e635','#94a3b8'];
 
-    const BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-      ? '' : '';
+    // Use relative paths so it works on both localhost and GitHub Pages (project sites)
+    const BASE = './api/v1';
 
     async function fetchJson(url) {
       const res = await fetch(url);
@@ -247,9 +247,9 @@
     async function init() {
       try {
         [latestData, nationalData, statesData] = await Promise.all([
-          fetchJson(`${BASE}/api/v1/latest.json`),
-          fetchJson(`${BASE}/api/v1/national.json`),
-          fetchJson(`${BASE}/api/v1/states.json`),
+          fetchJson(`${BASE}/latest.json`),
+          fetchJson(`${BASE}/national.json`),
+          fetchJson(`${BASE}/states.json`),
         ]);
 
         document.getElementById('last-updated').textContent = `Updated: ${latestData.date}`;
