@@ -6,10 +6,34 @@
       "midGrade": 4.154,
       "premium": 4.478,
       "diesel": 5.079
+    },
+    "2026-03-12": {
+      "regular": 3.718,
+      "midGrade": 4.155,
+      "premium": 4.475,
+      "diesel": 5.074
+    },
+    "2026-03-06": {
+      "regular": 3.353,
+      "midGrade": 3.809,
+      "premium": 4.131,
+      "diesel": 4.459
+    },
+    "2026-02-13": {
+      "regular": 2.917,
+      "midGrade": 3.388,
+      "premium": 3.715,
+      "diesel": 3.527
+    },
+    "2025-03-13": {
+      "regular": 3,
+      "midGrade": 3.445,
+      "premium": 3.768,
+      "diesel": 3.604
     }
   },
   "metadata": {
-    "lastUpdated": "2026-03-13T22:32:45.601Z",
+    "lastUpdated": "2026-03-13T22:46:41.341Z",
     "totalDays": 5,
     "firstDate": "2025-03-13",
     "lastDate": "2026-03-13"
