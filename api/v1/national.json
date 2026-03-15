@@ -1940,12 +1940,40 @@
       "premium": 3.914,
       "diesel": 3.615,
       "e85": 2.513
+    },
+    "2026-03-15": {
+      "regular": 3.699,
+      "midGrade": 4.193,
+      "premium": 4.56,
+      "diesel": 4.971,
+      "e85": 2.919
+    },
+    "2026-03-08": {
+      "regular": 3.45,
+      "midGrade": 3.942,
+      "premium": 4.306,
+      "diesel": 4.595,
+      "e85": 2.762
+    },
+    "2026-02-15": {
+      "regular": 2.927,
+      "midGrade": 3.433,
+      "premium": 3.797,
+      "diesel": 3.656,
+      "e85": 2.288
+    },
+    "2025-03-15": {
+      "regular": 3.079,
+      "midGrade": 3.556,
+      "premium": 3.91,
+      "diesel": 3.609,
+      "e85": 2.508
     }
   },
   "metadata": {
-    "lastUpdated": "2026-03-14T14:27:25.591Z",
-    "totalDays": 322,
+    "lastUpdated": "2026-03-15T14:29:04.258Z",
+    "totalDays": 326,
     "firstDate": "2020-03-16",
-    "lastDate": "2026-03-14"
+    "lastDate": "2026-03-15"
   }
 }
