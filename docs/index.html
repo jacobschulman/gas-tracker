@@ -5,202 +5,651 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gas Price Tracker</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
     :root {
-      --bg: #0f1117;
-      --surface: #1a1d27;
-      --border: #2a2d3a;
-      --text: #e1e4ed;
-      --muted: #8b8fa3;
-      --accent: #6c9cfc;
-      --green: #4ade80;
+      --bg: #09090b;
+      --surface: #18181b;
+      --surface-hover: #1f1f23;
+      --border: #27272a;
+      --border-subtle: #3f3f46;
+      --text: #fafafa;
+      --text-secondary: #a1a1aa;
+      --muted: #71717a;
+      --accent-blue: #2563eb;
+      --accent-indigo: #4f46e5;
+      --accent-purple: #9333ea;
+      --green: #34d399;
+      --green-bg: rgba(52,211,153,0.1);
       --red: #f87171;
-      --yellow: #fbbf24;
+      --red-bg: rgba(248,113,113,0.1);
+      --amber: #fbbf24;
+      --gradient: linear-gradient(135deg, #2563eb, #4f46e5, #9333ea);
+      --gradient-h: linear-gradient(90deg, #2563eb, #4f46e5, #9333ea);
+      --glow-blue: rgba(37,99,235,0.25);
+      --glow-purple: rgba(147,51,234,0.2);
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
+
     .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+    /* ─── Header ─── */
     header {
-      border-bottom: 1px solid var(--border);
-      padding: 24px 0;
-      margin-bottom: 24px;
+      padding: 32px 0 28px;
+      margin-bottom: 28px;
+      position: relative;
     }
-    header h1 { font-size: 1.8rem; font-weight: 700; }
-    header p { color: var(--muted); margin-top: 4px; }
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .header-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 20px var(--glow-blue), 0 0 40px var(--glow-purple);
+    }
+    .header-titles h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: var(--gradient-h);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header-titles p {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-top: 1px;
+    }
+
+    .hero-price {
+      display: flex;
+      align-items: baseline;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .hero-main {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .hero-amount {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+    }
+    .hero-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+    .hero-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .hero-change.up { background: var(--red-bg); color: var(--red); }
+    .hero-change.down { background: var(--green-bg); color: var(--green); }
+    .hero-change.flat { background: rgba(161,161,170,0.1); color: var(--text-secondary); }
+
     .meta {
       display: flex;
-      gap: 16px;
-      margin-top: 8px;
-      font-size: 0.85rem;
+      gap: 12px;
+      margin-top: 14px;
+      font-size: 0.75rem;
       color: var(--muted);
     }
-    .meta span { background: var(--surface); padding: 2px 8px; border-radius: 4px; }
+    .meta span {
+      background: var(--surface);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
 
+    .header-divider {
+      height: 2px;
+      margin-top: 24px;
+      background: var(--gradient-h);
+      border-radius: 1px;
+      opacity: 0.4;
+    }
+
+    /* ─── Controls ─── */
     .controls {
       display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 22px;
       flex-wrap: wrap;
       align-items: center;
     }
-    select, button {
+    .control-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .control-group-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-right: 2px;
+    }
+
+    .select-wrap {
+      position: relative;
+    }
+    .select-wrap select {
+      appearance: none;
       background: var(--surface);
       color: var(--text);
       border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 0.9rem;
+      padding: 9px 34px 9px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 500;
       cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
     }
-    select:hover, button:hover { border-color: var(--accent); }
-    button.active { background: var(--accent); color: #000; border-color: var(--accent); }
+    .select-wrap select:hover { border-color: var(--accent-indigo); }
+    .select-wrap select:focus { outline: none; border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid var(--muted);
+      pointer-events: none;
+    }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-    .card {
+    .time-segmented {
+      display: flex;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 18px;
+      overflow: hidden;
     }
-    .card .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-    .card .price { font-size: 2rem; font-weight: 700; margin: 4px 0; }
-    .card .change { font-size: 0.85rem; }
-    .card .change.up { color: var(--red); }
-    .card .change.down { color: var(--green); }
+    .time-segmented button {
+      background: none;
+      color: var(--text-secondary);
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+      position: relative;
+    }
+    .time-segmented button:hover { color: var(--text); background: var(--surface-hover); }
+    .time-segmented button.active {
+      background: var(--gradient);
+      color: #fff;
+    }
+    .time-segmented button + button { border-left: 1px solid var(--border); }
+    .time-segmented button.active + button,
+    .time-segmented button + button.active { border-left-color: transparent; }
 
+    .btn-share {
+      background: var(--surface);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .btn-share:hover { border-color: var(--accent-indigo); color: var(--text); }
+
+    /* ─── Stats Cards ─── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      transition: border-color 0.15s;
+    }
+    .stat-card:hover { border-color: var(--border-subtle); }
+    .stat-card .stat-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .stat-card .stat-value {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-card .stat-detail {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    .stat-card .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .stat-badge.up { background: var(--red-bg); color: var(--red); }
+    .stat-badge.down { background: var(--green-bg); color: var(--green); }
+    .stat-badge.flat { background: rgba(161,161,170,0.1); color: var(--text-secondary); }
+
+    /* ─── Chart ─── */
     .chart-container {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
+      border-radius: 14px;
+      padding: 22px;
       margin-bottom: 24px;
       position: relative;
     }
-    .chart-container h2 { font-size: 1.1rem; margin-bottom: 16px; }
-    canvas { width: 100% !important; height: 300px !important; }
-
-    .state-table-container {
-      background: var(--surface);
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chart-header h2 { font-size: 1rem; font-weight: 700; }
+    .chart-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn-compare {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      overflow-x: auto;
+      background: var(--surface-hover);
+      color: var(--text-secondary);
+      transition: all 0.15s;
+      font-family: inherit;
     }
-    .state-table-container h2 { font-size: 1.1rem; margin-bottom: 16px; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-    th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-    tr:hover td { background: rgba(108, 156, 252, 0.05); }
-    td.price-cell { font-variant-numeric: tabular-nums; }
-    .rank { color: var(--muted); font-size: 0.8rem; }
-    .high { color: var(--red); }
-    .low { color: var(--green); }
-
-    .loading { text-align: center; padding: 60px; color: var(--muted); }
-    .error { text-align: center; padding: 60px; color: var(--red); }
-
-    .api-info {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      margin-top: 24px;
+    .btn-compare:hover {
+      border-color: var(--accent-indigo);
+      color: var(--text);
+      background: rgba(79,70,229,0.08);
     }
-    .api-info h2 { font-size: 1.1rem; margin-bottom: 12px; }
-    .api-info code {
-      background: var(--bg);
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-size: 0.85rem;
-    }
-    .api-info ul { list-style: none; padding: 0; }
-    .api-info li { padding: 6px 0; border-bottom: 1px solid var(--border); }
-    .api-info li:last-child { border-bottom: none; }
-
     .compare-tag {
       display: inline-flex;
       align-items: center;
       gap: 4px;
       padding: 4px 10px;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 600;
       cursor: default;
     }
     .compare-tag .remove {
       cursor: pointer;
-      opacity: 0.7;
+      opacity: 0.6;
       margin-left: 2px;
+      font-size: 0.85rem;
     }
     .compare-tag .remove:hover { opacity: 1; }
+    canvas { width: 100% !important; height: 320px !important; }
 
-    footer { margin-top: 32px; padding: 20px 0; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 0.8rem; }
+    /* ─── State Table ─── */
+    .state-table-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      overflow-x: auto;
+    }
+    .table-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .table-header h2 { font-size: 1rem; font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    th:hover { color: var(--text-secondary); }
+    th .sort-arrow { font-size: 0.6rem; margin-left: 3px; opacity: 0.5; }
+    th.sorted .sort-arrow { opacity: 1; color: var(--accent-blue); }
+    tr { transition: background 0.1s; }
+    tr.clickable-row { cursor: pointer; }
+    tr.clickable-row:hover td { background: rgba(79,70,229,0.06); }
+    tr.highlighted td { background: rgba(79,70,229,0.08); border-left: 2px solid var(--accent-indigo); }
+    td.price-cell { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .rank { color: var(--muted); font-size: 0.75rem; }
+    .high { color: var(--red); }
+    .low { color: var(--green); }
+    .trend-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .trend-indicator.up { color: var(--red); }
+    .trend-indicator.down { color: var(--green); }
+    .trend-indicator.flat { color: var(--muted); }
+
+    /* ─── API Info ─── */
+    .api-info {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      margin-top: 24px;
+    }
+    .api-info h2 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+    .api-info code {
+      background: var(--bg);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+    .api-info ul { list-style: none; padding: 0; }
+    .api-info li { padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 0.82rem; color: var(--text-secondary); }
+    .api-info li:last-child { border-bottom: none; }
+
+    /* ─── Footer ─── */
+    footer {
+      margin-top: 32px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+    footer a { color: var(--accent-blue); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ─── Loading / Error ─── */
+    .loading { text-align: center; padding: 60px; color: var(--muted); }
+    .error { text-align: center; padding: 60px; color: var(--red); }
+
+    /* ─── Animations ─── */
+    @keyframes fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fade-in 0.4s ease-out forwards; }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.5; }
+    }
+
+    /* ─── Responsive: Tablet ─── */
+    @media (max-width: 768px) {
+      .container { padding: 14px; }
+
+      header { padding: 20px 0 18px; margin-bottom: 20px; }
+      .header-top { gap: 10px; margin-bottom: 14px; }
+      .header-icon { width: 36px; height: 36px; font-size: 18px; border-radius: 10px; }
+      .header-titles h1 { font-size: 1.3rem; }
+      .header-titles p { font-size: 0.72rem; }
+
+      .hero-amount { font-size: 2.4rem; }
+      .hero-price { gap: 16px; }
+      .hero-main { gap: 10px; }
+      .hero-label { font-size: 0.68rem; }
+      .hero-change { font-size: 0.72rem; padding: 4px 10px; }
+      .header-divider { margin-top: 18px; }
+
+      .meta { gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+      .meta span { font-size: 0.68rem; padding: 2px 8px; }
+
+      .controls { gap: 8px; margin-bottom: 16px; }
+      .control-group { width: 100%; }
+      .select-wrap { flex: 1; }
+      .select-wrap select { width: 100%; font-size: 0.8rem; padding: 10px 34px 10px 12px; }
+      .time-segmented { width: 100%; }
+      .time-segmented button { flex: 1; padding: 10px 8px; font-size: 0.75rem; }
+      .btn-share { flex: 0 0 auto; }
+
+      .stats-row { grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
+      .stat-card { padding: 14px 16px; border-radius: 12px; }
+      .stat-card .stat-value { font-size: 1.35rem; }
+      .stat-card .stat-label { font-size: 0.65rem; margin-bottom: 4px; }
+      .stat-card .stat-detail { font-size: 0.68rem; }
+
+      .chart-container { padding: 16px; margin-bottom: 16px; border-radius: 12px; }
+      .chart-header { margin-bottom: 12px; }
+      .chart-header h2 { font-size: 0.88rem; }
+      canvas { height: 240px !important; }
+      .btn-compare { font-size: 0.7rem; padding: 5px 10px; }
+
+      .state-table-container { padding: 14px; border-radius: 12px; }
+      .table-header { margin-bottom: 12px; }
+      .table-header h2 { font-size: 0.88rem; }
+      table { font-size: 0.75rem; }
+      th, td { padding: 8px 8px; }
+      th { font-size: 0.62rem; }
+
+      .api-info { padding: 16px; border-radius: 12px; margin-top: 16px; }
+      .api-info li { font-size: 0.75rem; }
+      .api-info code { font-size: 0.7rem; }
+    }
+
+    /* ─── Responsive: Small phone ─── */
+    @media (max-width: 480px) {
+      .container { padding: 10px; }
+
+      header { padding: 16px 0 14px; margin-bottom: 16px; }
+      .header-top { gap: 8px; margin-bottom: 12px; }
+      .header-icon { width: 32px; height: 32px; font-size: 16px; border-radius: 8px; }
+      .header-titles h1 { font-size: 1.1rem; }
+      .header-titles p { font-size: 0.68rem; }
+
+      .hero-amount { font-size: 2rem; }
+      .hero-price { gap: 10px; }
+      .hero-main { gap: 8px; }
+      .hero-label { font-size: 0.62rem; }
+      .hero-change { font-size: 0.68rem; padding: 3px 8px; }
+      .header-divider { margin-top: 14px; }
+
+      .meta { gap: 6px; }
+      .meta span { font-size: 0.62rem; }
+
+      .controls { gap: 6px; margin-bottom: 14px; }
+      .control-group { gap: 6px; }
+      .select-wrap select { padding: 8px 30px 8px 10px; font-size: 0.78rem; border-radius: 8px; }
+      .time-segmented { border-radius: 8px; }
+      .time-segmented button { padding: 8px 6px; font-size: 0.7rem; }
+      .btn-share { padding: 8px 12px; font-size: 0.72rem; border-radius: 8px; }
+
+      .stats-row { grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 14px; }
+      .stat-card { padding: 12px 12px; border-radius: 10px; }
+      .stat-card .stat-value { font-size: 1.15rem; }
+      .stat-card .stat-label { font-size: 0.6rem; letter-spacing: 0.04em; margin-bottom: 3px; }
+      .stat-card .stat-detail { font-size: 0.62rem; margin-top: 3px; }
+      .stat-card .stat-badge { font-size: 0.62rem; padding: 1px 6px; margin-top: 4px; }
+
+      .chart-container { padding: 12px; margin-bottom: 14px; border-radius: 10px; }
+      .chart-header { gap: 6px; margin-bottom: 10px; }
+      .chart-header h2 { font-size: 0.8rem; }
+      canvas { height: 200px !important; }
+      .btn-compare { font-size: 0.65rem; padding: 4px 8px; gap: 3px; border-radius: 6px; }
+      .btn-compare svg { width: 11px; height: 11px; }
+      .compare-tag { font-size: 0.62rem; padding: 3px 7px; }
+
+      .state-table-container { padding: 10px; border-radius: 10px; }
+      .table-header { margin-bottom: 10px; }
+      .table-header h2 { font-size: 0.8rem; }
+      table { font-size: 0.7rem; }
+      th, td { padding: 7px 5px; }
+      th { font-size: 0.58rem; letter-spacing: 0.03em; }
+      .rank { font-size: 0.65rem; }
+      .trend-indicator { font-size: 0.62rem; }
+
+      .api-info { padding: 12px; border-radius: 10px; margin-top: 14px; }
+      .api-info h2 { font-size: 0.88rem; margin-bottom: 8px; }
+      .api-info li { font-size: 0.7rem; padding: 5px 0; }
+      .api-info code { font-size: 0.65rem; word-break: break-all; }
+
+      footer { margin-top: 20px; padding: 14px 0; font-size: 0.68rem; }
+    }
+
+    /* ─── Responsive: Very small (iPhone SE etc) ─── */
+    @media (max-width: 360px) {
+      .hero-amount { font-size: 1.7rem; }
+      .stats-row { grid-template-columns: 1fr; }
+      .stat-card .stat-value { font-size: 1.3rem; }
+      .time-segmented button { padding: 8px 4px; font-size: 0.65rem; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Gas Price Tracker</h1>
-      <p>Daily fuel price tracking across the United States</p>
+      <div class="header-top">
+        <div class="header-icon">&#9981;</div>
+        <div class="header-titles">
+          <h1>Gas Price Tracker</h1>
+          <p>Daily fuel prices across the United States</p>
+        </div>
+      </div>
+      <div class="hero-price" id="hero-price">
+        <div class="hero-main">
+          <div class="hero-amount" id="hero-amount">—</div>
+          <div>
+            <div class="hero-label" id="hero-label">National<br>Regular</div>
+          </div>
+        </div>
+        <div id="hero-change" class="hero-change flat">Loading...</div>
+      </div>
       <div class="meta">
         <span id="last-updated">Loading...</span>
         <span id="data-range"></span>
       </div>
+      <div class="header-divider"></div>
     </header>
 
     <div class="controls">
-      <select id="grade-select">
-        <option value="regular">Regular</option>
-        <option value="midGrade">Mid-Grade</option>
-        <option value="premium">Premium</option>
-        <option value="diesel">Diesel</option>
-        <option value="e85">E85</option>
-      </select>
-      <select id="state-select">
-        <option value="">National Average</option>
-      </select>
-      <button id="btn-add-compare" title="Add state to compare">+ Compare</button>
-      <div id="compare-tags" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+      <div class="control-group">
+        <div class="select-wrap">
+          <select id="grade-select">
+            <option value="diesel">Diesel</option>
+            <option value="regular">Regular</option>
+            <option value="midGrade">Mid-Grade</option>
+            <option value="premium">Premium</option>
+            <option value="e85">E85</option>
+          </select>
+        </div>
+        <div class="select-wrap">
+          <select id="state-select">
+            <option value="">National Average</option>
+          </select>
+        </div>
+      </div>
       <div style="flex:1"></div>
-      <button id="btn-7d" data-days="7">7D</button>
-      <button id="btn-30d" data-days="30">30D</button>
-      <button id="btn-90d" data-days="90">90D</button>
-      <button id="btn-1y" data-days="365">1Y</button>
-      <button id="btn-all" data-days="0" class="active">All</button>
-      <button id="btn-share" title="Copy shareable link">Share</button>
+      <div class="time-segmented">
+        <button data-days="7">7D</button>
+        <button data-days="30">30D</button>
+        <button data-days="90">90D</button>
+        <button data-days="365">1Y</button>
+        <button data-days="0" class="active">All</button>
+      </div>
+      <button class="btn-share" id="btn-share" title="Copy shareable link">Share</button>
     </div>
 
-    <div class="cards" id="price-cards">
+    <div class="stats-row" id="stats-row">
       <div class="loading">Loading prices...</div>
     </div>
 
     <div class="chart-container">
-      <h2 id="chart-title">Price History</h2>
+      <div class="chart-header">
+        <h2 id="chart-title">Price History</h2>
+        <div class="chart-actions">
+          <div id="compare-tags" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+          <button class="btn-compare" id="btn-add-compare" title="Compare another state or fuel grade">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Compare State or Grade
+          </button>
+        </div>
+      </div>
       <canvas id="price-chart"></canvas>
     </div>
 
     <div class="state-table-container">
-      <h2>State Prices — <span id="table-grade">Regular</span></h2>
+      <div class="table-header">
+        <h2 id="table-title">State Prices — <span id="table-grade">Regular</span></h2>
+      </div>
       <table>
         <thead>
           <tr>
-            <th>#</th>
-            <th>State</th>
-            <th>Price</th>
-            <th>vs National</th>
+            <th data-sort="rank"># <span class="sort-arrow">▲</span></th>
+            <th data-sort="name">State <span class="sort-arrow">▲</span></th>
+            <th data-sort="price">Latest Price <span class="sort-arrow">▼</span></th>
+            <th data-sort="diff">vs National <span class="sort-arrow">▲</span></th>
+            <th data-sort="change">Period Change <span class="sort-arrow">▲</span></th>
           </tr>
         </thead>
         <tbody id="state-tbody">
-          <tr><td colspan="4" class="loading">Loading...</td></tr>
+          <tr><td colspan="5" class="loading">Loading...</td></tr>
         </tbody>
       </table>
     </div>
@@ -211,7 +660,7 @@
         <li><code>GET /api/v1/latest.json</code> — Current prices (national + all states)</li>
         <li><code>GET /api/v1/national.json</code> — Full national price history</li>
         <li><code>GET /api/v1/states/{STATE_CODE}.json</code> — History for one state (e.g. CA, TX)</li>
-        <li><code>GET /api/v1/fuel/{grade}.json</code> — National history for one grade (regular, midGrade, premium, diesel, e85)</li>
+        <li><code>GET /api/v1/fuel/{grade}.json</code> — National history for one grade</li>
         <li><code>GET /api/v1/fuel/{grade}/states.json</code> — All states history for one grade</li>
         <li><code>GET /api/v1/fuel/{grade}/states/{STATE_CODE}.json</code> — One grade, one state</li>
       </ul>
@@ -219,7 +668,7 @@
 
     <footer>
       Data sourced from AAA. Updated daily via GitHub Actions.<br>
-      <a href="https://github.com/jacobschulman/gas-tracker" style="color:var(--accent)">GitHub</a>
+      <a href="https://github.com/jacobschulman/gas-tracker">GitHub</a>
     </footer>
   </div>
 
@@ -227,25 +676,40 @@
   <script>
     const STATE_NAMES = {AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',CO:'Colorado',CT:'Connecticut',DE:'Delaware',DC:'District of Columbia',FL:'Florida',GA:'Georgia',HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',KS:'Kansas',KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',MA:'Massachusetts',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MO:'Missouri',MT:'Montana',NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',NY:'New York',NC:'North Carolina',ND:'North Dakota',OH:'Ohio',OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VT:'Vermont',VA:'Virginia',WA:'Washington',WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming'};
     const GRADE_LABELS = {regular:'Regular',midGrade:'Mid-Grade',premium:'Premium',diesel:'Diesel',e85:'E85'};
+    const TIME_LABELS = {0:'All Time',7:'7 Days',30:'30 Days',90:'90 Days',365:'1 Year'};
 
     let nationalData = null;
     let statesData = null;
     let latestData = null;
     let chart = null;
     let selectedDays = 0;
-    let compareStates = []; // array of state codes to compare on chart
+    let compareItems = []; // { type: 'state', value: 'CA' } or { type: 'grade', value: 'regular' }
+    let tableSortKey = 'price';
+    let tableSortDir = 'desc';
 
-    const CHART_COLORS = ['#6c9cfc','#f87171','#4ade80','#fbbf24','#c084fc','#fb923c','#22d3ee','#f472b6','#a3e635','#94a3b8'];
-
-    // Use relative paths so it works on both localhost and GitHub Pages (project sites)
+    const CHART_COLORS = ['#6c9cfc','#f87171','#34d399','#fbbf24','#c084fc','#fb923c','#22d3ee','#f472b6','#a3e635','#94a3b8'];
     const BASE = './api/v1';
+
+    function parseCompareParam(str) {
+      if (!str) return [];
+      return str.split(',').map(c => {
+        c = c.trim();
+        if (GRADE_LABELS[c]) return { type: 'grade', value: c };
+        if (STATE_NAMES[c.toUpperCase()]) return { type: 'state', value: c.toUpperCase() };
+        return null;
+      }).filter(Boolean);
+    }
+
+    function serializeCompareItems() {
+      return compareItems.map(c => c.value).join(',');
+    }
 
     function readUrlParams() {
       const p = new URLSearchParams(window.location.search);
       return {
-        grade: p.get('grade') || 'regular',
+        grade: p.get('grade') || 'diesel',
         state: p.get('state') || '',
-        compare: p.get('compare') ? p.get('compare').split(',').filter(c => STATE_NAMES[c]) : [],
+        compare: parseCompareParam(p.get('compare')),
         days: p.has('days') ? parseInt(p.get('days'), 10) : 0,
       };
     }
@@ -254,9 +718,9 @@
       const grade = document.getElementById('grade-select').value;
       const state = document.getElementById('state-select').value;
       const p = new URLSearchParams();
-      if (grade !== 'regular') p.set('grade', grade);
+      if (grade !== 'diesel') p.set('grade', grade);
       if (state) p.set('state', state);
-      if (compareStates.length > 0) p.set('compare', compareStates.join(','));
+      if (compareItems.length > 0) p.set('compare', serializeCompareItems());
       if (selectedDays > 0) p.set('days', String(selectedDays));
       const qs = p.toString();
       const url = window.location.pathname + (qs ? '?' + qs : '');
@@ -278,9 +742,8 @@
         ]);
 
         document.getElementById('last-updated').textContent = `Updated: ${latestData.date}`;
-        document.getElementById('data-range').textContent = `${latestData.metadata.totalDays} days tracked (${latestData.metadata.firstDate} → ${latestData.metadata.lastDate})`;
+        document.getElementById('data-range').textContent = `${latestData.metadata.totalDays} days tracked`;
 
-        // Populate state dropdown
         const sel = document.getElementById('state-select');
         const codes = Object.keys(STATE_NAMES).sort((a,b) => STATE_NAMES[a].localeCompare(STATE_NAMES[b]));
         for (const code of codes) {
@@ -290,14 +753,12 @@
           sel.appendChild(opt);
         }
 
-        // Apply URL params
         const params = readUrlParams();
         document.getElementById('grade-select').value = params.grade;
         sel.value = params.state;
-        compareStates = params.compare;
+        compareItems = params.compare;
         selectedDays = params.days;
         renderCompareTags();
-        // Highlight the correct time button
         document.querySelectorAll('[data-days]').forEach(b => {
           b.classList.toggle('active', parseInt(b.dataset.days) === selectedDays);
         });
@@ -305,7 +766,7 @@
         render();
         setupListeners();
       } catch (err) {
-        document.getElementById('price-cards').innerHTML = `<div class="error">Failed to load data. API may not be deployed yet.</div>`;
+        document.getElementById('stats-row').innerHTML = `<div class="error">Failed to load data. API may not be deployed yet.</div>`;
         console.error(err);
       }
     }
@@ -313,23 +774,37 @@
     function setupListeners() {
       document.getElementById('grade-select').addEventListener('change', render);
       document.getElementById('state-select').addEventListener('change', () => {
-        // When switching primary state, clear comparison
-        compareStates = [];
+        // Keep grade comparisons, clear state comparisons
+        compareItems = compareItems.filter(c => c.type === 'grade');
         renderCompareTags();
         render();
       });
       document.getElementById('btn-add-compare').addEventListener('click', () => {
-        const sel = document.getElementById('state-select');
-        const primary = sel.value;
-        // Show a quick picker: prompt for state code
-        const input = prompt('Enter state code to compare (e.g. CA, TX, GA):');
+        const primary = document.getElementById('state-select').value;
+        const primaryGrade = document.getElementById('grade-select').value;
+        const input = prompt('Compare a state (e.g. CA, TX) or fuel grade (e.g. regular, premium, diesel):');
         if (!input) return;
-        const code = input.trim().toUpperCase();
-        if (!STATE_NAMES[code]) { alert('Unknown state code: ' + code); return; }
+        const val = input.trim();
+
+        // Check if it's a grade
+        const gradeKey = Object.keys(GRADE_LABELS).find(k => k.toLowerCase() === val.toLowerCase() || GRADE_LABELS[k].toLowerCase() === val.toLowerCase());
+        if (gradeKey) {
+          if (gradeKey === primaryGrade) return;
+          if (compareItems.some(c => c.type === 'grade' && c.value === gradeKey)) return;
+          if (compareItems.length >= 9) { alert('Max 9 comparisons'); return; }
+          compareItems.push({ type: 'grade', value: gradeKey });
+          renderCompareTags();
+          render();
+          return;
+        }
+
+        // Otherwise treat as state code
+        const code = val.toUpperCase();
+        if (!STATE_NAMES[code]) { alert('Unknown state or grade: ' + val); return; }
         if (code === primary) return;
-        if (compareStates.includes(code)) return;
-        if (compareStates.length >= 9) { alert('Max 9 comparison states'); return; }
-        compareStates.push(code);
+        if (compareItems.some(c => c.type === 'state' && c.value === code)) return;
+        if (compareItems.length >= 9) { alert('Max 9 comparisons'); return; }
+        compareItems.push({ type: 'state', value: code });
         renderCompareTags();
         render();
       });
@@ -348,19 +823,39 @@
           setTimeout(() => { btn.textContent = 'Share'; }, 2000);
         });
       });
+
+      // Table column sorting
+      document.querySelectorAll('th[data-sort]').forEach(th => {
+        th.addEventListener('click', () => {
+          const key = th.dataset.sort;
+          if (tableSortKey === key) {
+            tableSortDir = tableSortDir === 'asc' ? 'desc' : 'asc';
+          } else {
+            tableSortKey = key;
+            tableSortDir = key === 'name' ? 'asc' : 'desc';
+          }
+          // Update sort arrow display
+          document.querySelectorAll('th[data-sort]').forEach(h => h.classList.remove('sorted'));
+          th.classList.add('sorted');
+          th.querySelector('.sort-arrow').textContent = tableSortDir === 'asc' ? '▲' : '▼';
+          render();
+        });
+      });
     }
 
     function renderCompareTags() {
       const container = document.getElementById('compare-tags');
-      container.innerHTML = compareStates.map((code, i) => {
+      container.innerHTML = compareItems.map((item, i) => {
         const color = CHART_COLORS[(i + 1) % CHART_COLORS.length];
-        return `<span class="compare-tag" style="background:${color}22;color:${color};border:1px solid ${color}44">
-          ${code} <span class="remove" data-code="${code}">&times;</span>
+        const label = item.type === 'state' ? item.value : GRADE_LABELS[item.value];
+        const icon = item.type === 'grade' ? '&#9679; ' : '';
+        return `<span class="compare-tag" style="background:${color}18;color:${color};border:1px solid ${color}33">
+          ${icon}${label} <span class="remove" data-idx="${i}">&times;</span>
         </span>`;
       }).join('');
       container.querySelectorAll('.remove').forEach(el => {
         el.addEventListener('click', () => {
-          compareStates = compareStates.filter(c => c !== el.dataset.code);
+          compareItems.splice(parseInt(el.dataset.idx), 1);
           renderCompareTags();
           render();
         });
@@ -371,56 +866,161 @@
       const grade = document.getElementById('grade-select').value;
       const stateCode = document.getElementById('state-select').value;
       document.getElementById('table-grade').textContent = GRADE_LABELS[grade];
-      renderCards(grade, stateCode);
+      renderHero(grade, stateCode);
+      renderStats(grade, stateCode);
       renderChart(grade, stateCode);
-      renderTable(grade);
+      renderTable(grade, stateCode);
       updateUrl();
     }
 
-    function renderCards(grade, stateCode) {
-      const container = document.getElementById('price-cards');
-      const grades = ['regular', 'midGrade', 'premium', 'diesel'];
-      const isNational = !stateCode;
+    function getFilteredDates(sourceData) {
+      let dates = Object.keys(sourceData).sort();
+      if (selectedDays > 0) {
+        const cutoff = new Date();
+        cutoff.setDate(cutoff.getDate() - selectedDays);
+        const cutoffStr = cutoff.toISOString().split('T')[0];
+        dates = dates.filter(d => d >= cutoffStr);
+      }
+      return dates;
+    }
 
-      let currentPrices;
+    function renderHero(grade, stateCode) {
+      const isNational = !stateCode;
+      const prices = isNational ? latestData.national : latestData.states[stateCode];
+      if (!prices || prices[grade] == null) {
+        document.getElementById('hero-amount').textContent = '—';
+        return;
+      }
+      const price = prices[grade];
+      document.getElementById('hero-amount').textContent = `$${price.toFixed(3)}`;
+
+      const locationLabel = isNational ? 'National' : STATE_NAMES[stateCode];
+      document.getElementById('hero-label').innerHTML = `${locationLabel}<br>${GRADE_LABELS[grade]}`;
+
+      // Week-over-week change
+      const sourceData = isNational ? nationalData.data : statesData.data;
+      const dates = Object.keys(sourceData).sort();
+      const latest = dates[dates.length - 1];
+      const weekAgoIdx = Math.max(0, dates.length - 8);
+      const weekAgoDate = dates[weekAgoIdx];
+      let weekPrice;
       if (isNational) {
-        currentPrices = latestData.national;
+        weekPrice = sourceData[weekAgoDate]?.[grade];
       } else {
-        currentPrices = latestData.states[stateCode];
+        weekPrice = sourceData[weekAgoDate]?.[stateCode]?.[grade];
       }
 
-      if (!currentPrices) {
+      const changeEl = document.getElementById('hero-change');
+      if (weekPrice != null) {
+        const diff = price - weekPrice;
+        const pct = ((diff / weekPrice) * 100).toFixed(1);
+        const cls = diff > 0 ? 'up' : diff < 0 ? 'down' : 'flat';
+        const arrow = diff > 0 ? '↑' : diff < 0 ? '↓' : '—';
+        changeEl.className = `hero-change ${cls}`;
+        changeEl.textContent = `${arrow} $${Math.abs(diff).toFixed(3)} (${diff > 0 ? '+' : ''}${pct}%) past 7 days`;
+      } else {
+        changeEl.className = 'hero-change flat';
+        changeEl.textContent = '';
+      }
+    }
+
+    function renderStats(grade, stateCode) {
+      const container = document.getElementById('stats-row');
+      const isNational = !stateCode;
+      const sourceData = isNational ? nationalData.data : statesData.data;
+      const dates = getFilteredDates(sourceData);
+
+      if (dates.length === 0) {
+        container.innerHTML = '<div class="loading">No data for this period</div>';
+        return;
+      }
+
+      // Extract price series for selected grade/state
+      const series = [];
+      for (const d of dates) {
+        let p;
+        if (isNational) {
+          p = sourceData[d]?.[grade];
+        } else {
+          p = sourceData[d]?.[stateCode]?.[grade];
+        }
+        if (p != null) series.push({ date: d, price: p });
+      }
+
+      if (series.length === 0) {
         container.innerHTML = '<div class="loading">No data available</div>';
         return;
       }
 
-      // Find previous date for comparison
-      const dates = Object.keys(isNational ? nationalData.data : statesData.data).sort();
-      const latestDate = dates[dates.length - 1];
-      const prevDate = dates.length > 1 ? dates[dates.length - 2] : null;
-      let prevPrices = null;
-      if (prevDate) {
-        prevPrices = isNational
-          ? nationalData.data[prevDate]
-          : statesData.data[prevDate]?.[stateCode];
+      const current = series[series.length - 1];
+      const first = series[0];
+      const prev = series.length > 1 ? series[series.length - 2] : null;
+
+      // Period high/low
+      let high = { price: -Infinity, date: '' };
+      let low = { price: Infinity, date: '' };
+      for (const s of series) {
+        if (s.price > high.price) high = s;
+        if (s.price < low.price) low = s;
       }
 
-      container.innerHTML = grades.map(g => {
-        const price = currentPrices[g];
-        if (price == null) return '';
-        const prev = prevPrices?.[g];
-        let changeHtml = '';
-        if (prev != null) {
-          const diff = price - prev;
-          const cls = diff > 0 ? 'up' : diff < 0 ? 'down' : '';
-          changeHtml = `<div class="change ${cls}">${diff > 0 ? '↑' : diff < 0 ? '↓' : '—'} $${Math.abs(diff).toFixed(3)} vs ${prevDate}</div>`;
+      // Period change
+      const periodDiff = current.price - first.price;
+      const periodPct = ((periodDiff / first.price) * 100).toFixed(1);
+      const periodCls = periodDiff > 0 ? 'up' : periodDiff < 0 ? 'down' : 'flat';
+      const periodArrow = periodDiff > 0 ? '↑' : periodDiff < 0 ? '↓' : '—';
+
+      // Day-over-day
+      let dayChangeHtml = '';
+      if (prev) {
+        const dayDiff = current.price - prev.price;
+        const dayCls = dayDiff > 0 ? 'up' : dayDiff < 0 ? 'down' : 'flat';
+        const dayArrow = dayDiff > 0 ? '↑' : dayDiff < 0 ? '↓' : '—';
+        dayChangeHtml = `<span class="stat-badge ${dayCls}">${dayArrow} $${Math.abs(dayDiff).toFixed(3)}</span>`;
+      }
+
+      // vs National card (only when viewing a state)
+      let vsNationalCard = '';
+      if (!isNational) {
+        const natPrice = latestData.national?.[grade];
+        if (natPrice != null) {
+          const diff = current.price - natPrice;
+          const cls = diff > 0 ? 'high' : 'low';
+          vsNationalCard = `
+            <div class="stat-card">
+              <div class="stat-label">vs National Avg</div>
+              <div class="stat-value" style="color: var(--${diff > 0 ? 'red' : 'green'})">${diff > 0 ? '+' : ''}$${diff.toFixed(3)}</div>
+              <div class="stat-detail">National: $${natPrice.toFixed(3)}</div>
+            </div>`;
         }
-        return `<div class="card">
-          <div class="label">${GRADE_LABELS[g]}</div>
-          <div class="price">$${price.toFixed(3)}</div>
-          ${changeHtml}
-        </div>`;
-      }).join('');
+      }
+
+      const timeLabel = TIME_LABELS[selectedDays] || 'All Time';
+
+      container.innerHTML = `
+        <div class="stat-card">
+          <div class="stat-label">Current Price</div>
+          <div class="stat-value">$${current.price.toFixed(3)}</div>
+          <div class="stat-detail">${current.date}</div>
+          ${dayChangeHtml}
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">${timeLabel} High</div>
+          <div class="stat-value" style="color: var(--red)">$${high.price.toFixed(3)}</div>
+          <div class="stat-detail">${high.date}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">${timeLabel} Low</div>
+          <div class="stat-value" style="color: var(--green)">$${low.price.toFixed(3)}</div>
+          <div class="stat-detail">${low.date}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">${timeLabel} Change</div>
+          <div class="stat-value"><span class="stat-badge ${periodCls}" style="font-size:1rem;padding:4px 12px;">${periodArrow} ${Math.abs(periodPct)}%</span></div>
+          <div class="stat-detail">${periodDiff > 0 ? '+' : ''}$${periodDiff.toFixed(3)} since ${first.date}</div>
+        </div>
+        ${vsNationalCard}
+      `;
     }
 
     function getSeriesForSource(grade, stateCode) {
@@ -439,23 +1039,27 @@
 
     function renderChart(grade, stateCode) {
       const isNational = !stateCode;
-      const hasCompare = compareStates.length > 0;
+      const hasCompare = compareItems.length > 0;
 
-      let title = isNational
-        ? `National ${GRADE_LABELS[grade]} Price History`
-        : `${STATE_NAMES[stateCode]} ${GRADE_LABELS[grade]} Price History`;
+      const locationLabel = isNational ? 'National' : STATE_NAMES[stateCode];
+      let title = `${locationLabel} ${GRADE_LABELS[grade]} Price History`;
       if (hasCompare) title += ' (comparison)';
       document.getElementById('chart-title').textContent = title;
 
-      // Build all series to find the union of all dates
       const allSeries = [];
-      const primaryLabel = isNational ? 'National' : STATE_NAMES[stateCode];
-      allSeries.push({ label: primaryLabel, code: stateCode, series: getSeriesForSource(grade, stateCode) });
-      for (const code of compareStates) {
-        allSeries.push({ label: STATE_NAMES[code], code, series: getSeriesForSource(grade, code) });
+      const primaryLabel = isNational ? `National ${GRADE_LABELS[grade]}` : `${STATE_NAMES[stateCode]} ${GRADE_LABELS[grade]}`;
+      allSeries.push({ label: primaryLabel, series: getSeriesForSource(grade, stateCode) });
+
+      for (const item of compareItems) {
+        if (item.type === 'state') {
+          const label = `${STATE_NAMES[item.value]} ${GRADE_LABELS[grade]}`;
+          allSeries.push({ label, series: getSeriesForSource(grade, item.value) });
+        } else if (item.type === 'grade') {
+          const label = `${locationLabel} ${GRADE_LABELS[item.value]}`;
+          allSeries.push({ label, series: getSeriesForSource(item.value, stateCode) });
+        }
       }
 
-      // Union of all dates
       const allDatesSet = new Set();
       for (const s of allSeries) {
         for (const d of Object.keys(s.series)) allDatesSet.add(d);
@@ -470,14 +1074,15 @@
       }
 
       const datasets = allSeries.map((s, i) => ({
-        label: `${s.label} ${GRADE_LABELS[grade]} ($/gal)`,
+        label: `${s.label} ($/gal)`,
         data: allDates.map(d => s.series[d] ?? null),
         borderColor: CHART_COLORS[i % CHART_COLORS.length],
         backgroundColor: CHART_COLORS[i % CHART_COLORS.length] + '1a',
         fill: allSeries.length === 1,
         tension: 0.3,
-        pointRadius: allDates.length > 60 ? 0 : 4,
-        pointHoverRadius: 6,
+        pointRadius: allDates.length > 60 ? 0 : 3,
+        pointHoverRadius: 5,
+        borderWidth: 2,
         spanGaps: true,
       }));
 
@@ -489,9 +1094,17 @@
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
           plugins: {
-            legend: { display: allSeries.length > 1, labels: { color: '#8b8fa3' } },
+            legend: { display: allSeries.length > 1, labels: { color: '#71717a', font: { family: 'Inter', size: 11, weight: '500' }, boxWidth: 12, padding: 16 } },
             tooltip: {
+              backgroundColor: '#18181b',
+              borderColor: '#3f3f46',
+              borderWidth: 1,
+              titleFont: { family: 'Inter', size: 12, weight: '600' },
+              bodyFont: { family: 'Inter', size: 12 },
+              padding: 10,
+              cornerRadius: 8,
               callbacks: {
                 label: ctx => `${ctx.dataset.label.split(' (')[0]}: $${ctx.parsed.y.toFixed(3)}`
               }
@@ -499,49 +1112,110 @@
           },
           scales: {
             x: {
-              ticks: { color: '#8b8fa3', maxTicksLimit: 12 },
-              grid: { color: 'rgba(42,45,58,0.5)' },
+              ticks: { color: '#71717a', maxTicksLimit: 10, font: { family: 'Inter', size: 11 } },
+              grid: { color: 'rgba(39,39,42,0.5)' },
             },
             y: {
-              ticks: {
-                color: '#8b8fa3',
-                callback: v => '$' + v.toFixed(2),
-              },
-              grid: { color: 'rgba(42,45,58,0.5)' },
+              ticks: { color: '#71717a', callback: v => '$' + v.toFixed(2), font: { family: 'Inter', size: 11 } },
+              grid: { color: 'rgba(39,39,42,0.5)' },
             }
           }
         }
       });
     }
 
-    function renderTable(grade) {
+    function renderTable(grade, stateCode) {
       const tbody = document.getElementById('state-tbody');
-      const latestDate = latestData.date;
       const stateEntries = latestData.states;
       if (!stateEntries || Object.keys(stateEntries).length === 0) {
-        tbody.innerHTML = '<tr><td colspan="4" class="loading">No state data</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="5" class="loading">No state data</td></tr>';
         return;
       }
 
       const nationalPrice = latestData.national?.[grade];
+      const sourceData = statesData.data;
+      const dates = getFilteredDates(sourceData);
+      const firstDate = dates[0];
+      const timeLabel = TIME_LABELS[selectedDays] || 'All Time';
+
+      // Update table title with date and time period context
+      const latestDate = latestData.date;
+      document.getElementById('table-title').innerHTML = `State Prices — <span id="table-grade">${GRADE_LABELS[grade]}</span> <span style="color:var(--muted);font-weight:500;font-size:0.82rem">as of ${latestDate} &middot; change over ${timeLabel.toLowerCase()}</span>`;
 
       const rows = Object.entries(stateEntries)
-        .map(([code, prices]) => ({ code, name: STATE_NAMES[code] || code, price: prices[grade] }))
-        .filter(r => r.price != null)
-        .sort((a, b) => b.price - a.price);
+        .map(([code, prices]) => {
+          const price = prices[grade];
+          if (price == null) return null;
+          const name = STATE_NAMES[code] || code;
+          const diff = nationalPrice ? price - nationalPrice : null;
 
-      tbody.innerHTML = rows.map((r, i) => {
-        const diff = nationalPrice ? r.price - nationalPrice : null;
-        const diffStr = diff != null
-          ? `<span class="${diff > 0 ? 'high' : 'low'}">${diff > 0 ? '+' : ''}$${diff.toFixed(3)}</span>`
+          // Period change
+          let periodChange = null;
+          let periodPct = null;
+          if (firstDate && sourceData[firstDate]?.[code]?.[grade] != null) {
+            const startPrice = sourceData[firstDate][code][grade];
+            periodChange = price - startPrice;
+            periodPct = ((periodChange / startPrice) * 100).toFixed(1);
+          }
+
+          return { code, name, price, diff, periodChange, periodPct };
+        })
+        .filter(Boolean);
+
+      // Sort
+      rows.sort((a, b) => {
+        let cmp = 0;
+        switch (tableSortKey) {
+          case 'rank':
+          case 'price': cmp = b.price - a.price; break;
+          case 'name': cmp = a.name.localeCompare(b.name); break;
+          case 'diff': cmp = (b.diff ?? 0) - (a.diff ?? 0); break;
+          case 'change': cmp = (b.periodChange ?? 0) - (a.periodChange ?? 0); break;
+        }
+        return tableSortDir === 'asc' ? -cmp : cmp;
+      });
+
+      // Assign ranks by price (highest = 1) regardless of sort
+      const byPrice = [...rows].sort((a, b) => b.price - a.price);
+      const rankMap = {};
+      byPrice.forEach((r, i) => rankMap[r.code] = i + 1);
+
+      const selectedState = stateCode;
+      const compareStateCodes = compareItems.filter(c => c.type === 'state').map(c => c.value);
+      const highlightCodes = new Set([selectedState, ...compareStateCodes].filter(Boolean));
+
+      tbody.innerHTML = rows.map(r => {
+        const diffStr = r.diff != null
+          ? `<span class="${r.diff > 0 ? 'high' : 'low'}">${r.diff > 0 ? '+' : ''}$${r.diff.toFixed(3)}</span>`
           : '—';
-        return `<tr>
-          <td class="rank">${i + 1}</td>
+
+        let changeStr = '—';
+        if (r.periodChange != null) {
+          const cls = r.periodChange > 0 ? 'up' : r.periodChange < 0 ? 'down' : 'flat';
+          const arrow = r.periodChange > 0 ? '↑' : r.periodChange < 0 ? '↓' : '—';
+          changeStr = `<span class="trend-indicator ${cls}">${arrow} $${Math.abs(r.periodChange).toFixed(3)} (${r.periodChange > 0 ? '+' : ''}${r.periodPct}%)</span>`;
+        }
+
+        const isHighlighted = highlightCodes.has(r.code);
+        return `<tr class="clickable-row${isHighlighted ? ' highlighted' : ''}" data-state="${r.code}">
+          <td class="rank">${rankMap[r.code]}</td>
           <td>${r.name} (${r.code})</td>
           <td class="price-cell">$${r.price.toFixed(3)}</td>
           <td>${diffStr}</td>
+          <td>${changeStr}</td>
         </tr>`;
       }).join('');
+
+      // Make rows clickable
+      tbody.querySelectorAll('.clickable-row').forEach(row => {
+        row.addEventListener('click', () => {
+          const code = row.dataset.state;
+          document.getElementById('state-select').value = code;
+          compareItems = compareItems.filter(c => c.type === 'grade');
+          renderCompareTags();
+          render();
+        });
+      });
     }
 
     init();
