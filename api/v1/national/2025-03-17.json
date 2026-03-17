@@ -1,9 +1,10 @@
 {
   "date": "2025-03-17",
   "prices": {
-    "regular": 3.058,
-    "midGrade": 3.627,
-    "premium": 3.989,
-    "diesel": 3.549
+    "regular": 3.078,
+    "midGrade": 3.541,
+    "premium": 3.899,
+    "diesel": 3.592,
+    "e85": 2.501
   }
 }
