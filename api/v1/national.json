@@ -2941,12 +2941,26 @@
       "premium": 4.04,
       "diesel": 3.554,
       "e85": 2.615
+    },
+    "2026-05-23": {
+      "regular": 4.529,
+      "midGrade": 5.03,
+      "premium": 5.404,
+      "diesel": 5.631,
+      "e85": 3.647
+    },
+    "2025-05-23": {
+      "regular": 3.197,
+      "midGrade": 3.683,
+      "premium": 4.037,
+      "diesel": 3.552,
+      "e85": 2.617
     }
   },
   "metadata": {
-    "lastUpdated": "2026-05-22T16:24:17.280Z",
-    "totalDays": 463,
+    "lastUpdated": "2026-05-23T14:59:23.841Z",
+    "totalDays": 465,
     "firstDate": "2020-03-16",
-    "lastDate": "2026-05-22"
+    "lastDate": "2026-05-23"
   }
 }
