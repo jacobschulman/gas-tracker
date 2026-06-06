@@ -510,12 +510,18 @@
       "midGrade": 4.84,
       "premium": 5.121,
       "diesel": 5.431
+    },
+    "2026-06-06": {
+      "regular": 4.536,
+      "midGrade": 4.826,
+      "premium": 5.107,
+      "diesel": 5.414
     }
   },
   "metadata": {
-    "lastUpdated": "2026-06-05T16:28:17.219Z",
-    "totalDays": 489,
+    "lastUpdated": "2026-06-06T15:13:50.814Z",
+    "totalDays": 491,
     "firstDate": "2020-03-16",
-    "lastDate": "2026-06-05"
+    "lastDate": "2026-06-06"
   }
 }
