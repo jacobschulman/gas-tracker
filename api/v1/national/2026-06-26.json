@@ -1,0 +1,10 @@
+{
+  "date": "2026-06-26",
+  "prices": {
+    "regular": 3.901,
+    "midGrade": 4.418,
+    "premium": 4.792,
+    "diesel": 4.934,
+    "e85": 3
+  }
+}
