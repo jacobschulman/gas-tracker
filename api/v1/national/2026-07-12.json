@@ -1,10 +1,10 @@
 {
   "date": "2026-07-12",
   "prices": {
-    "regular": 3.876,
-    "midGrade": 4.383,
-    "premium": 4.765,
+    "regular": 3.8761,
+    "midGrade": 4.3827,
+    "premium": 4.7652,
     "diesel": 4.88,
-    "e85": 2.966
+    "e85": 2.9664
   }
 }
