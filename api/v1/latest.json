@@ -1,324 +1,324 @@
 {
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "national": {
-    "regular": 3.7818,
-    "midGrade": 4.3026,
-    "premium": 4.6975,
-    "diesel": 5.9848,
-    "e85": 2.8862
+    "regular": 3.7502,
+    "midGrade": 4.2844,
+    "premium": 4.6759,
+    "diesel": 5.9594,
+    "e85": 2.856
   },
   "states": {
     "AL": {
-      "regular": 3.4477,
-      "midGrade": 3.9172,
-      "premium": 4.3266,
-      "diesel": 5.6528
+      "regular": 3.4256,
+      "midGrade": 3.9153,
+      "premium": 4.3271,
+      "diesel": 5.6356
     },
     "AK": {
-      "regular": 4.4116,
-      "midGrade": 4.5912,
-      "premium": 4.8485,
-      "diesel": 6.1731
+      "regular": 4.3734,
+      "midGrade": 4.5335,
+      "premium": 4.8063,
+      "diesel": 6.1332
     },
     "AZ": {
-      "regular": 4.0239,
-      "midGrade": 4.3822,
-      "premium": 4.7115,
-      "diesel": 6.073
+      "regular": 3.9934,
+      "midGrade": 4.356,
+      "premium": 4.6869,
+      "diesel": 6.0611
     },
     "AR": {
-      "regular": 3.4449,
-      "midGrade": 3.9451,
-      "premium": 4.3367,
-      "diesel": 5.6012
+      "regular": 3.4102,
+      "midGrade": 3.9139,
+      "premium": 4.3101,
+      "diesel": 5.5795
     },
     "CA": {
-      "regular": 5.5438,
-      "midGrade": 5.7802,
-      "premium": 5.9734,
-      "diesel": 7.9232
+      "regular": 5.5249,
+      "midGrade": 5.7691,
+      "premium": 5.9598,
+      "diesel": 7.8955
     },
     "CO": {
-      "regular": 3.6605,
-      "midGrade": 4.0463,
-      "premium": 4.3865,
-      "diesel": 5.936
+      "regular": 3.5859,
+      "midGrade": 3.969,
+      "premium": 4.2975,
+      "diesel": 5.8614
     },
     "CT": {
-      "regular": 3.998,
-      "midGrade": 4.6867,
-      "premium": 5.0845,
-      "diesel": 6.2132
+      "regular": 3.9783,
+      "midGrade": 4.6799,
+      "premium": 5.0647,
+      "diesel": 6.2013
     },
     "DE": {
-      "regular": 3.7554,
-      "midGrade": 4.3435,
-      "premium": 4.656,
-      "diesel": 6.0171
+      "regular": 3.7265,
+      "midGrade": 4.3254,
+      "premium": 4.6292,
+      "diesel": 5.9893
     },
     "DC": {
-      "regular": 4.1367,
-      "midGrade": 4.7959,
-      "premium": 5.1538,
-      "diesel": 6.3669
+      "regular": 4.1104,
+      "midGrade": 4.7807,
+      "premium": 5.1754,
+      "diesel": 6.3625
     },
     "FL": {
-      "regular": 3.563,
-      "midGrade": 4.0331,
-      "premium": 4.3809,
-      "diesel": 5.6978
+      "regular": 3.532,
+      "midGrade": 4.0108,
+      "premium": 4.3564,
+      "diesel": 5.6748
     },
     "GA": {
-      "regular": 3.3047,
-      "midGrade": 3.7973,
-      "premium": 4.2457,
-      "diesel": 5.4772
+      "regular": 3.2811,
+      "midGrade": 3.791,
+      "premium": 4.2339,
+      "diesel": 5.4711
     },
     "HI": {
-      "regular": 5.5967,
-      "midGrade": 5.8817,
-      "premium": 6.1137,
-      "diesel": 7.2389
+      "regular": 5.5981,
+      "midGrade": 5.8796,
+      "premium": 6.134,
+      "diesel": 7.243
     },
     "ID": {
-      "regular": 4.0513,
-      "midGrade": 4.395,
-      "premium": 4.6471,
-      "diesel": 6.1081
+      "regular": 4.0273,
+      "midGrade": 4.3608,
+      "premium": 4.6116,
+      "diesel": 6.0681
     },
     "IL": {
-      "regular": 4.1193,
-      "midGrade": 4.7363,
-      "premium": 5.3039,
-      "diesel": 6.2162
+      "regular": 4.0695,
+      "midGrade": 4.703,
+      "premium": 5.2684,
+      "diesel": 6.1744
     },
     "IN": {
-      "regular": 3.2747,
-      "midGrade": 3.9007,
-      "premium": 4.4184,
-      "diesel": 6.3456
+      "regular": 3.224,
+      "midGrade": 3.8535,
+      "premium": 4.3772,
+      "diesel": 6.3091
     },
     "IA": {
-      "regular": 3.5966,
-      "midGrade": 3.9356,
-      "premium": 4.5034,
-      "diesel": 5.6037
+      "regular": 3.5699,
+      "midGrade": 3.9084,
+      "premium": 4.4752,
+      "diesel": 5.5717
     },
     "KS": {
-      "regular": 3.5502,
-      "midGrade": 3.9376,
-      "premium": 4.2954,
-      "diesel": 5.5304
+      "regular": 3.534,
+      "midGrade": 3.9207,
+      "premium": 4.2767,
+      "diesel": 5.5108
     },
     "KY": {
-      "regular": 3.5308,
-      "midGrade": 4.1282,
-      "premium": 4.5653,
-      "diesel": 5.8743
+      "regular": 3.4984,
+      "midGrade": 4.1062,
+      "premium": 4.5408,
+      "diesel": 5.8489
     },
     "LA": {
-      "regular": 3.3923,
-      "midGrade": 3.8806,
-      "premium": 4.3005,
-      "diesel": 5.5081
+      "regular": 3.3713,
+      "midGrade": 3.8762,
+      "premium": 4.2824,
+      "diesel": 5.4913
     },
     "ME": {
-      "regular": 3.9958,
-      "midGrade": 4.5885,
-      "premium": 5.0654,
-      "diesel": 6.1933
+      "regular": 3.972,
+      "midGrade": 4.5663,
+      "premium": 5.0478,
+      "diesel": 6.1589
     },
     "MD": {
-      "regular": 3.7747,
-      "midGrade": 4.404,
-      "premium": 4.7048,
-      "diesel": 6.0425
+      "regular": 3.7484,
+      "midGrade": 4.3733,
+      "premium": 4.6711,
+      "diesel": 6.0288
     },
     "MA": {
-      "regular": 3.9321,
-      "midGrade": 4.6135,
-      "premium": 5.0006,
-      "diesel": 6.1174
+      "regular": 3.9085,
+      "midGrade": 4.5967,
+      "premium": 4.9897,
+      "diesel": 6.0961
     },
     "MI": {
-      "regular": 3.7459,
-      "midGrade": 4.4036,
-      "premium": 5.0206,
-      "diesel": 6.2205
+      "regular": 3.704,
+      "midGrade": 4.373,
+      "premium": 4.9989,
+      "diesel": 6.1928
     },
     "MN": {
-      "regular": 3.652,
-      "midGrade": 4.1332,
-      "premium": 4.657,
-      "diesel": 5.7946
+      "regular": 3.6111,
+      "midGrade": 4.0928,
+      "premium": 4.6154,
+      "diesel": 5.7576
     },
     "MS": {
-      "regular": 3.5088,
-      "midGrade": 3.996,
-      "premium": 4.3857,
-      "diesel": 5.6085
+      "regular": 3.49,
+      "midGrade": 3.9898,
+      "premium": 4.3923,
+      "diesel": 5.5927
     },
     "MO": {
-      "regular": 3.4807,
-      "midGrade": 3.8796,
-      "premium": 4.2402,
-      "diesel": 5.6964
+      "regular": 3.4538,
+      "midGrade": 3.8594,
+      "premium": 4.2146,
+      "diesel": 5.6723
     },
     "MT": {
-      "regular": 3.6212,
-      "midGrade": 3.9332,
-      "premium": 4.3125,
-      "diesel": 5.878
+      "regular": 3.5864,
+      "midGrade": 3.92,
+      "premium": 4.2812,
+      "diesel": 5.8741
     },
     "NE": {
-      "regular": 3.7078,
-      "midGrade": 3.9678,
-      "premium": 4.4818,
-      "diesel": 5.6634
+      "regular": 3.6955,
+      "midGrade": 3.9603,
+      "premium": 4.4562,
+      "diesel": 5.6385
     },
     "NV": {
-      "regular": 4.8785,
-      "midGrade": 5.1981,
-      "premium": 5.501,
-      "diesel": 6.6519
+      "regular": 4.8471,
+      "midGrade": 5.1908,
+      "premium": 5.4697,
+      "diesel": 6.6464
     },
     "NH": {
-      "regular": 3.9417,
-      "midGrade": 4.5606,
-      "premium": 5.0316,
-      "diesel": 6.1287
+      "regular": 3.9243,
+      "midGrade": 4.5464,
+      "premium": 5.0134,
+      "diesel": 6.0952
     },
     "NJ": {
-      "regular": 3.918,
-      "midGrade": 4.5604,
-      "premium": 4.8604,
-      "diesel": 6.1014
+      "regular": 3.8973,
+      "midGrade": 4.5455,
+      "premium": 4.8474,
+      "diesel": 6.075
     },
     "NM": {
-      "regular": 3.5904,
-      "midGrade": 4.0157,
-      "premium": 4.353,
-      "diesel": 5.6506
+      "regular": 3.5836,
+      "midGrade": 4.0097,
+      "premium": 4.3518,
+      "diesel": 5.6336
     },
     "NY": {
-      "regular": 4.1173,
-      "midGrade": 4.6895,
-      "premium": 5.0809,
-      "diesel": 6.3367
+      "regular": 4.0964,
+      "midGrade": 4.6755,
+      "premium": 5.0703,
+      "diesel": 6.3202
     },
     "NC": {
-      "regular": 3.085,
-      "midGrade": 3.5487,
-      "premium": 3.9781,
-      "diesel": 5.2869
+      "regular": 3.0753,
+      "midGrade": 3.5461,
+      "premium": 3.9749,
+      "diesel": 5.2767
     },
     "ND": {
-      "regular": 3.6578,
-      "midGrade": 4.0757,
-      "premium": 4.5423,
-      "diesel": 5.7286
+      "regular": 3.6188,
+      "midGrade": 4.046,
+      "premium": 4.4765,
+      "diesel": 5.7052
     },
     "OH": {
-      "regular": 3.3845,
-      "midGrade": 3.959,
-      "premium": 4.4996,
-      "diesel": 6.0486
+      "regular": 3.3197,
+      "midGrade": 3.9023,
+      "premium": 4.4485,
+      "diesel": 6.008
     },
     "OK": {
-      "regular": 3.3113,
-      "midGrade": 3.7305,
-      "premium": 4.0286,
-      "diesel": 5.4014
+      "regular": 3.2749,
+      "midGrade": 3.7045,
+      "premium": 4.0024,
+      "diesel": 5.3735
     },
     "OR": {
-      "regular": 4.4269,
-      "midGrade": 4.6843,
-      "premium": 4.9782,
-      "diesel": 6.4642
+      "regular": 4.4014,
+      "midGrade": 4.6637,
+      "premium": 4.9648,
+      "diesel": 6.4531
     },
     "PA": {
-      "regular": 4.2012,
-      "midGrade": 4.6385,
-      "premium": 5.0835,
-      "diesel": 6.4524
+      "regular": 4.1772,
+      "midGrade": 4.6157,
+      "premium": 5.0623,
+      "diesel": 6.4392
     },
     "RI": {
-      "regular": 3.8142,
-      "midGrade": 4.5692,
-      "premium": 4.9458,
-      "diesel": 6.0028
+      "regular": 3.7836,
+      "midGrade": 4.5558,
+      "premium": 4.9194,
+      "diesel": 5.9705
     },
     "SC": {
-      "regular": 3.3462,
-      "midGrade": 3.8135,
-      "premium": 4.2151,
-      "diesel": 5.5042
+      "regular": 3.3272,
+      "midGrade": 3.7997,
+      "premium": 4.2024,
+      "diesel": 5.4984
     },
     "SD": {
-      "regular": 3.6761,
-      "midGrade": 3.9161,
-      "premium": 4.4686,
-      "diesel": 5.5246
+      "regular": 3.6525,
+      "midGrade": 3.9153,
+      "premium": 4.4569,
+      "diesel": 5.5051
     },
     "TN": {
-      "regular": 3.4079,
-      "midGrade": 3.8649,
-      "premium": 4.286,
-      "diesel": 5.6885
+      "regular": 3.3844,
+      "midGrade": 3.8549,
+      "premium": 4.2686,
+      "diesel": 5.6737
     },
     "TX": {
-      "regular": 3.2518,
-      "midGrade": 3.758,
-      "premium": 4.139,
-      "diesel": 5.4021
+      "regular": 3.2203,
+      "midGrade": 3.7411,
+      "premium": 4.1217,
+      "diesel": 5.3815
     },
     "UT": {
-      "regular": 4.0303,
-      "midGrade": 4.334,
-      "premium": 4.5708,
-      "diesel": 6.051
+      "regular": 3.9965,
+      "midGrade": 4.3001,
+      "premium": 4.5356,
+      "diesel": 6.0244
     },
     "VT": {
-      "regular": 4.0805,
-      "midGrade": 4.6734,
-      "premium": 5.1083,
-      "diesel": 6.1404
+      "regular": 4.0562,
+      "midGrade": 4.6671,
+      "premium": 5.1035,
+      "diesel": 6.1139
     },
     "VA": {
-      "regular": 3.6834,
-      "midGrade": 4.1884,
-      "premium": 4.606,
-      "diesel": 6.0096
+      "regular": 3.6589,
+      "midGrade": 4.1731,
+      "premium": 4.5894,
+      "diesel": 5.9909
     },
     "WA": {
-      "regular": 4.793,
-      "midGrade": 5.0752,
-      "premium": 5.3276,
-      "diesel": 6.9851
+      "regular": 4.7682,
+      "midGrade": 5.0641,
+      "premium": 5.3172,
+      "diesel": 6.9798
     },
     "WV": {
-      "regular": 3.8624,
-      "midGrade": 4.2908,
-      "premium": 4.7545,
-      "diesel": 6.1931
+      "regular": 3.8327,
+      "midGrade": 4.2579,
+      "premium": 4.7174,
+      "diesel": 6.178
     },
     "WI": {
-      "regular": 3.5883,
-      "midGrade": 4.2246,
-      "premium": 4.7822,
-      "diesel": 5.8592
+      "regular": 3.5476,
+      "midGrade": 4.1875,
+      "premium": 4.7581,
+      "diesel": 5.8289
     },
     "WY": {
-      "regular": 3.8703,
-      "midGrade": 4.1722,
-      "premium": 4.4608,
-      "diesel": 6.0034
+      "regular": 3.8551,
+      "midGrade": 4.1719,
+      "premium": 4.4525,
+      "diesel": 5.9935
     }
   },
   "metadata": {
-    "lastUpdated": "2026-11-17T22:00:46.231Z",
-    "totalDays": 794,
+    "lastUpdated": "2026-11-18T21:41:54.331Z",
+    "totalDays": 796,
     "firstDate": "2020-03-16",
-    "lastDate": "2026-11-17"
+    "lastDate": "2026-11-18"
   }
 }
