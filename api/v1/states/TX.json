@@ -3404,14 +3404,14 @@
       "diesel": 5.2489
     },
     "2026-11-24": {
-      "regular": 3.0986,
-      "midGrade": 3.5907,
-      "premium": 3.9752,
-      "diesel": 5.2214
+      "regular": 3.1039,
+      "midGrade": 3.6173,
+      "premium": 3.995,
+      "diesel": 5.2018
     }
   },
   "metadata": {
-    "lastUpdated": "2026-11-24T01:28:27.485Z",
+    "lastUpdated": "2026-11-24T23:22:38.357Z",
     "totalDays": 806,
     "firstDate": "2020-03-16",
     "lastDate": "2026-11-24"
